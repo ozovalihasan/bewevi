@@ -1,21 +1,11 @@
 import { useSelector } from 'react-redux';
-import PlantShortContainer from './PlantShortContainer';
+import PlantList from '../component/PlantList';
 
 const PlantListContainer = () => {
   const plants = useSelector(state => state.plant.plants);
   return (
-    <>
-      {plants.map(plant => (
-        <PlantShortContainer
-          key={plant.id}
-          plant={{
-            slug: plant.slug,
-            commonName: plant.common_name,
-            imageUrl: plant.image_url,
-          }}
-        />
-      ))}
-    </>
+
+    <PlantList plants={plants} />
   );
 };
 

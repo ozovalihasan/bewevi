@@ -1,0 +1,25 @@
+.one-plant {
+  &.main {
+    background-color: orange;
+  }
+
+  &.top-part {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.top-images {
+    width: 100%;
+  }
+
+  &.bottom-part {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  &.bottom-images {
+    width: 100%;
+  }
+}

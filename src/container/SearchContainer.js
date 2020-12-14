@@ -4,8 +4,8 @@ import Search from '../component/Search';
 import { fetchPlantsSearch } from '../redux';
 
 const SearchContainer = () => {
-  const [searchInput, setSearchInput] = useState(useSelector(state => state.plant.search));
-
+  const saved = useSelector(state => state.plant.search);
+  const [searchInput, setSearchInput] = useState(saved);
   const dispatch = useDispatch();
 
   const handleChangeInput = e => {
@@ -13,10 +13,12 @@ const SearchContainer = () => {
   };
 
   const handleClick = () => {
-    dispatch(fetchPlantsSearch(searchInput));
+    dispatch(fetchPlantsSearch({ searchInput }));
   };
+
   return (
     <Search
+      key={saved}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
       searchInput={searchInput}

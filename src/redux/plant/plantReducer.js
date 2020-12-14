@@ -1,10 +1,10 @@
 import {
   PLANT_REQUEST,
-  PLANT_SUCCESS,
   PLANT_FAILURE,
   ADD_ALL_PLANTS,
   UPDATE_FILTER,
   UPDATE_SEARCH,
+  UPDATE_SELECTED_PLANT,
 } from './plantTypes';
 
 const reducer = (state = {}, action) => {
@@ -15,19 +15,10 @@ const reducer = (state = {}, action) => {
         loading: true,
       };
 
-    case PLANT_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        plants: action.payload.username,
-        error: '',
-      };
-
     case PLANT_FAILURE:
       return {
         ...state,
         loading: false,
-        plants: '',
         error: action.payload,
       };
 
@@ -44,17 +35,25 @@ const reducer = (state = {}, action) => {
     case UPDATE_FILTER:
       return {
         ...state,
-        loading: false,
         filter: action.payload.filter,
         filterInput: action.payload.filterInput,
         error: '',
       };
 
     case UPDATE_SEARCH:
+      console.log(action.payload);
+
+      return {
+        ...state,
+        search: action.payload,
+        error: '',
+      };
+
+    case UPDATE_SELECTED_PLANT:
       return {
         ...state,
         loading: false,
-        search: action.payload,
+        chosen: action.payload,
         error: '',
       };
 

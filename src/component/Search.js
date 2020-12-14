@@ -3,10 +3,22 @@ import PropTypes from 'prop-types';
 const Search = ({
   handleChangeInput, handleClick, searchInput,
 }) => (
-  <>
-    <input type="text" onChange={handleChangeInput} placeholder="Search" value={searchInput} />
-    <button type="button" onClick={handleClick}>Search</button>
-  </>
+  <div className="search main">
+    <input
+      className="search search-input"
+      type="text"
+      onChange={handleChangeInput}
+      placeholder="Search"
+      value={searchInput}
+    />
+    <button
+      className="search search-button"
+      type="button"
+      onClick={handleClick}
+    >
+      Search
+    </button>
+  </div>
 
 );
 

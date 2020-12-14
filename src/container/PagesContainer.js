@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import PagesBar from '../component/PagesBar';
 
 // import Pages from '../component/Pages';
 import { openPlantPage } from '../redux';
@@ -18,18 +19,12 @@ const PagesContainer = () => {
   };
 
   const pages = [];
-  if (selfPage > firstPage) pages.push([selfPage - 1, 'previous']);
+  if (selfPage > firstPage) pages.push([selfPage - 1, 'Previous']);
   pages.push([selfPage, selfPage]);
   if (selfPage < lastPage) pages.push([selfPage + 1, 'Next']);
 
   return (
-    <>
-      {pages.map(page => (
-        <button type="button" key={`${dividePath[0]}page=${page[0]}${dividePath[1]}`} onClick={() => handleClick(page[0])} className={selfPage === page[0] ? 'orange' : ''}>
-          {page[1]}
-        </button>
-      ))}
-    </>
+    <PagesBar pages={pages} dividePath={dividePath} handleClick={handleClick} selfPage={selfPage} />
   );
 };
 

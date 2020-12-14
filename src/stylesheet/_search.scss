@@ -1,0 +1,30 @@
+.search {
+  &.main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  &.search-input {
+    outline: none;
+    padding: 5px 0 5px 15px;
+    border: 1px solid rgb(156, 156, 156);
+    font-size: 30px;
+    border-radius: 10px 0 0 10px;
+    border-right: none;
+  }
+
+  &.search-button {
+    background-color: transparent;
+    border: 1px solid rgb(156, 156, 156);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    padding: 20px;
+    font-size: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

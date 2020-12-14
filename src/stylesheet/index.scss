@@ -1,8 +1,20 @@
 @import 'reset.css';
+@import 'variable';
 
 * {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 // @import 'book-store-header', 'books-page', 'book', 'category-filter',
 //   'progress-chart', 'profile', 'user-form', 'books-form', 'loading';
+@import 'filter',
+  'loading',
+  'one-plant',
+  'plant-short',
+  'plant-list',
+  'pages-bar',
+  'search';

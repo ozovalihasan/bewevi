@@ -11,7 +11,6 @@ function App() {
   const dispatch = useDispatch();
   const initialized = useSelector(state => state.plant.initialized);
   const loading = useSelector(state => state.plant.loading);
-  console.log(initialized, loading);
   if (!initialized) {
     if (!loading) dispatch(fetchPlantsList());
     return (

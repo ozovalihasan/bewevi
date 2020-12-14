@@ -41,8 +41,6 @@ const reducer = (state = {}, action) => {
       };
 
     case UPDATE_SEARCH:
-      console.log(action.payload);
-
       return {
         ...state,
         search: action.payload,

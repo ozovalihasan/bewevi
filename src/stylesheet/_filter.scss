@@ -1,5 +1,44 @@
 .filter {
   &.main {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: auto;
+  }
+
+  &.filter-select {
+    outline: none;
+    padding: 5px 0 5px 15px;
+    border: 1px solid rgb(156, 156, 156);
+    font-size: 30px;
     background-color: transparent;
+    border-radius: 10px 0 0 10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &.filter-input {
+    outline: none;
+    padding: 5px 0 5px 15px;
+    border: 1px solid rgb(156, 156, 156);
+    font-size: 30px;
+    border-right: none;
+    border-left: none;
+    width: 20%;
+  }
+
+  &.filter-button {
+    background-color: transparent;
+    border: 1px solid rgb(156, 156, 156);
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    padding: 20px;
+    font-size: 30px;
+    width: 250px;
+    flex-shrink: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

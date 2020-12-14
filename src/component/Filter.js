@@ -4,15 +4,21 @@ const Filter = ({
   handleChangeFilter, plantProperties, handleChangeInput, handleClick, filterInput,
 }) => (
   <div className="filter main">
-    <select name="filter" onChange={handleChangeFilter}>
+    <select className="filter filter-select" name="filter" onChange={handleChangeFilter}>
       {plantProperties.map(plantProperties => (
         <option key={plantProperties[0]} value={plantProperties[0]}>
           {plantProperties[1]}
         </option>
       ))}
     </select>
-    <input type="text" onChange={handleChangeInput} value={filterInput} />
-    <button type="button" onClick={handleClick}>Filter Results</button>
+    <input
+      className="filter filter-input"
+      type="text"
+      onChange={handleChangeInput}
+      value={filterInput}
+      placeholder="Filter"
+    />
+    <button className="filter filter-button" type="button" onClick={handleClick}>Filter Results</button>
   </div>
 
 );

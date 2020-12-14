@@ -10,35 +10,48 @@ const OnePlant = ({
 
         <div className="one-plant main-image">
           {plant.image_url
-            ? <img src={plant.image_url} alt="plant" width="100" onError={onError} className="one-plant top-images" />
+            ? (
+              <img
+                src={plant.image_url}
+                alt="plant"
+                width="100"
+                onError={onError}
+                className="one-plant top-images"
+              />
+            )
             : emptyImage('one-plant top-images')}
         </div>
-        <div>
+        <div className="one-plant top-description">
 
-          <div>
+          <div className="one-plant description-part">
             Year:
+            {'  '}
             {plant.year}
           </div>
-          <div>
+          <div className="one-plant description-part">
             Common Name:
-            {plant.common_name}
+            {'  '}
+            {plant.common_name || 'No common name'}
           </div>
-          <div>
-            Scientific Name
-            {plant.scientific_name}
+          <div className="one-plant description-part">
+            Scientific Name:
+            {'  '}
+            {plant.scientific_name || 'No scientific name'}
           </div>
-          <div>
-            Common Family Name
-            {plant.family_common_name}
+          <div className="one-plant description-part">
+            Common Family Name:
+            {'  '}
+            {plant.family_common_name || 'No common family name'}
           </div>
-          <div>
-            Family Name
-            {plant.family}
+          <div className="one-plant description-part">
+            Family Name:
+            {'  '}
+            {plant.family || 'No family name'}
           </div>
         </div>
       </div>
       <div className="one-plant bottom-part">
-        <div>
+        <div className="one-plant one-property">
           <div>
             Fruit
           </div>
@@ -52,7 +65,7 @@ const OnePlant = ({
           ) : emptyImage('one-plant bottom-images')}
         </div>
 
-        <div>
+        <div className="one-plant one-property">
           <div>
             Leaf
           </div>
@@ -65,7 +78,7 @@ const OnePlant = ({
             />
           ) : emptyImage('one-plant bottom-images')}
         </div>
-        <div>
+        <div className="one-plant one-property">
           <div>
             Flower
           </div>

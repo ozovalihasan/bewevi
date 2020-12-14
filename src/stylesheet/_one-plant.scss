@@ -1,6 +1,6 @@
 .one-plant {
   &.main {
-    background-color: orange;
+    font-family: 'Courier New', Courier, monospace;
   }
 
   &.top-part {
@@ -11,15 +11,44 @@
 
   &.top-images {
     width: 100%;
+    border-radius: 10px;
+    margin: 20px;
+  }
+
+  &.top-description {
+    padding: 50px;
+    font-size: 20px;
+  }
+
+  &.description-part {
+    margin: 25px 5px;
+    padding: 25px 5px;
+    background-color: $first-color;
+    border-radius: 10px;
   }
 
   &.bottom-part {
     width: 100%;
+    padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  &.one-property {
+    background-color: $third-color;
+    padding: 20px 10px 10px;
+    margin: 10px;
+    font-size: 20px;
+    // border: solid red 1px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
   &.bottom-images {
+    margin-top: 20px;
+    // height: 100%;
     width: 100%;
+    border-radius: 10px;
   }
 }

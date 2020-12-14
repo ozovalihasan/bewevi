@@ -1,0 +1,18 @@
+.logo {
+  &.main {
+    display: flex;
+    color: $fourth-color;
+  }
+
+  &.image {
+    align-self: center;
+    height: 100px;
+  }
+
+  &.title {
+    height: auto;
+    align-self: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+  }
+}

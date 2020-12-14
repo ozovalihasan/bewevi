@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../component/Loading';
 import { fetchPlantsList } from '../redux';
-import FilterContainer from './FilterContainer';
 import PagesContainer from './PagesContainer';
 import PlantListContainer from './PlantsListContainer';
-import SearchContainer from './SearchContainer';
+// import SearchContainer from './SearchContainer';
+import ToggleFilterSearchContainer from './ToggleFilterSearchContainer';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,10 +16,9 @@ function App() {
   return (
     <div className="App">
       {loading && <Loading />}
-      <SearchContainer />
+      <ToggleFilterSearchContainer />
       <PlantListContainer />
       <PagesContainer />
-      <FilterContainer />
 
     </div>
   );

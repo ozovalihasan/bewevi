@@ -12,6 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+
         <Switch>
           <Route exact path="/" component={App} />
           <Route exact path="/one-plant" component={OnePlantContainer} />

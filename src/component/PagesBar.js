@@ -19,8 +19,14 @@ function PagesBar({
   );
 }
 PagesBar.propTypes = {
-  pages: PropTypes.arrayOf().isRequired,
-  dividePath: PropTypes.arrayOf().isRequired,
+  pages: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    ).isRequired,
+  ).isRequired,
+  dividePath: PropTypes.arrayOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
   handleClick: PropTypes.func.isRequired,
   selfPage: PropTypes.number.isRequired,
 

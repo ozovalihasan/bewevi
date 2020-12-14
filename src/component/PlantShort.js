@@ -29,7 +29,7 @@ PlantShort.propTypes = {
   }).isRequired,
   handleClick: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,
-  emptyImage: PropTypes.shape().isRequired,
+  emptyImage: PropTypes.func.isRequired,
 
 };
 

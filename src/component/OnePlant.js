@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Logo from './Logo';
 
 const OnePlant = ({
-  plant, onError, emptyImage,
+  plant, handleError, emptyImage,
 }) => (
   <div className="one-plant main">
     <div className="one-plant logo">
@@ -17,7 +17,7 @@ const OnePlant = ({
               src={plant.image_url}
               alt="plant"
               width="100"
-              onError={onError}
+              onError={handleError}
               className="one-plant top-images"
             />
           )
@@ -61,7 +61,7 @@ const OnePlant = ({
           <img
             src={plant.images.fruit[0].image_url}
             alt={`fruit of ${plant.common_name}`}
-            onError={onError}
+            onError={handleError}
             className="one-plant bottom-images"
           />
         ) : emptyImage('one-plant bottom-images')}
@@ -76,7 +76,7 @@ const OnePlant = ({
             className="one-plant bottom-images"
             src={plant.images.leaf[0].image_url}
             alt={`Leaf of ${plant.common_name}`}
-            onError={onError}
+            onError={handleError}
           />
         ) : emptyImage('one-plant bottom-images')}
       </div>
@@ -89,7 +89,7 @@ const OnePlant = ({
             className="one-plant bottom-images"
             src={plant.images.flower[0].image_url}
             alt={`Leaf of ${plant.common_name}`}
-            onError={onError}
+            onError={handleError}
           />
         ) : emptyImage('one-plant bottom-images')}
       </div>
@@ -101,8 +101,8 @@ const OnePlant = ({
 
 OnePlant.propTypes = {
   plant: PropTypes.shape().isRequired,
-  onError: PropTypes.func.isRequired,
-  emptyImage: PropTypes.shape().isRequired,
+  handleError: PropTypes.func.isRequired,
+  emptyImage: PropTypes.func.isRequired,
 };
 
 export default OnePlant;

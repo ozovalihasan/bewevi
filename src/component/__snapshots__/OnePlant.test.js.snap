@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OnePlant /> renders correctly 1`] = `
+<div
+  className="one-plant main"
+>
+  <div
+    className="one-plant logo"
+  >
+    <a
+      className="logo main"
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        className="logo image"
+        src="emptyImage.svg"
+      />
+      <div
+        className="logo title"
+      >
+        Ivy
+      </div>
+    </a>
+  </div>
+  <div
+    className="one-plant top-part"
+  >
+    <div
+      className="one-plant main-image"
+    />
+    <div
+      className="one-plant top-description"
+    >
+      <div
+        className="one-plant description-part"
+      >
+        Year:
+          
+      </div>
+      <div
+        className="one-plant description-part"
+      >
+        Common Name:
+          
+        No common name
+      </div>
+      <div
+        className="one-plant description-part"
+      >
+        Scientific Name:
+          
+        No scientific name
+      </div>
+      <div
+        className="one-plant description-part"
+      >
+        Common Family Name:
+          
+        No common family name
+      </div>
+      <div
+        className="one-plant description-part"
+      >
+        Family Name:
+          
+        No family name
+      </div>
+    </div>
+  </div>
+  <div
+    className="one-plant bottom-part"
+  >
+    <div
+      className="one-plant one-property"
+    >
+      <div>
+        Fruit
+      </div>
+      <img
+        alt="fruit of undefined"
+        className="one-plant bottom-images"
+        onError={[MockFunction]}
+      />
+    </div>
+    <div
+      className="one-plant one-property"
+    >
+      <div>
+        Leaf
+      </div>
+      <img
+        alt="Leaf of undefined"
+        className="one-plant bottom-images"
+        onError={[MockFunction]}
+      />
+    </div>
+    <div
+      className="one-plant one-property"
+    >
+      <div>
+        Flower
+      </div>
+      <img
+        alt="Leaf of undefined"
+        className="one-plant bottom-images"
+        onError={[MockFunction]}
+      />
+    </div>
+  </div>
+</div>
+`;

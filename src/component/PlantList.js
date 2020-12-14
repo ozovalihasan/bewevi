@@ -19,12 +19,12 @@ const PlantList = ({ plants }) => (
 );
 
 PlantList.propTypes = {
-  plants: PropTypes.arrayOf({
-    id: PropTypes.string.isRequired,
+  plants: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
     common_name: PropTypes.string.isRequired,
     scientific_name: PropTypes.string.isRequired,
     image_url: PropTypes.string.isRequired,
-  }).isRequired,
+  })).isRequired,
 };
 
 export default PlantList;

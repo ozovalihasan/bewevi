@@ -23,12 +23,10 @@ const OnePlantContainer = () => {
   return (
     <>
       {loading && <Loading />}
-
       {(plant.images) ? (
-
         <OnePlant
           plant={plant}
-          onError={handleError}
+          handleError={handleError}
           emptyImage={emptyImage}
         />
       ) : (

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> renders correctly 1`] = `
+<div
+  className="filter main"
+>
+  <select
+    className="filter filter-select"
+    name="filter"
+    onChange={[MockFunction]}
+  >
+    <option
+      value="common_name"
+    >
+      Common Name
+    </option>
+  </select>
+  <input
+    className="filter filter-input"
+    onChange={[MockFunction]}
+    placeholder="Filter"
+    type="text"
+    value="Microverse"
+  />
+  <button
+    className="filter filter-button"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    Filter Results
+  </button>
+</div>
+`;

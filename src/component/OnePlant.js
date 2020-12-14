@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Logo from './Logo';
 
 const OnePlant = ({
   plant, onError, emptyImage,
@@ -6,6 +7,9 @@ const OnePlant = ({
   console.log(plant);
   return (
     <div className="one-plant main">
+      <div className="one-plant logo">
+        <Logo />
+      </div>
       <div className="one-plant top-part">
 
         <div className="one-plant main-image">

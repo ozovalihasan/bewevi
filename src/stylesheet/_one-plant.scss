@@ -1,6 +1,11 @@
 .one-plant {
   &.main {
     font-family: 'Courier New', Courier, monospace;
+    margin-top: 20px;
+  }
+
+  &.logo {
+    padding-left: 20px;
   }
 
   &.top-part {

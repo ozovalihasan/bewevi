@@ -11,7 +11,15 @@ function App() {
   const dispatch = useDispatch();
   const initialized = useSelector(state => state.plant.initialized);
   const loading = useSelector(state => state.plant.loading);
-  if (!initialized) dispatch(fetchPlantsList());
+  console.log(initialized, loading);
+  if (!initialized) {
+    if (!loading) dispatch(fetchPlantsList());
+    return (
+      <div>
+        {loading && <Loading />}
+      </div>
+    );
+  }
 
   return (
     <div className="App">

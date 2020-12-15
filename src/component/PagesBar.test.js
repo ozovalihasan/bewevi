@@ -57,7 +57,6 @@ describe('<PagesBar />', () => {
     userEvent.click(screen.getByText(/Next/i));
     expect(handleClick.mock.calls.length).toBe(3);
     expect(handleClick.mock.calls[2][0]).toBe(5);
-    console.warn(handleClick.mock);
   });
 
   it('renders correctly', () => {

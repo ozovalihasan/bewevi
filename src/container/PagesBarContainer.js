@@ -10,7 +10,6 @@ const PagesBarContainer = () => {
 
   const lastPage = parseInt(links.last.split(/page=/)[1].split(/&/)[0], 10);
   const selfPage = parseInt(links.self.split(/page=/)[1]?.split(/&/)[0], 10) || 1;
-  // const selfPath = links.self.split(/page=/)[0];
   const firstPage = parseInt(links.first.split(/page=/)[1].split(/&/)[0], 10);
 
   const dividePath = links.last.split(/page=\d*/);
@@ -24,7 +23,7 @@ const PagesBarContainer = () => {
   if (selfPage < lastPage) pages.push([selfPage + 1, 'Next']);
 
   return (
-    <PagesBar pages={pages} dividePath={dividePath} handleClick={handleClick} selfPage={selfPage} />
+    <PagesBar pages={pages} handleClick={handleClick} selfPage={selfPage} />
   );
 };
 

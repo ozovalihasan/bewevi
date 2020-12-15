@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import renderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils'; // ES6
+import ReactTestUtils from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
 import OnePlant from './OnePlant';
 

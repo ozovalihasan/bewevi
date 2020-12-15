@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 
 function PagesBar({
-  pages, dividePath, handleClick, selfPage,
+  pages, handleClick, selfPage,
 }) {
   return (
     <div className="pages-bar main">
       {pages.map(page => (
         <button
           type="button"
-          key={`${dividePath[0]}page=${page[0]}${dividePath[1]}`}
+          key={page[0]}
           onClick={() => handleClick(page[0])}
           className={`pages-bar page-button ${selfPage === page[0] ? 'current-page' : ''}`}
         >
@@ -23,9 +23,6 @@ PagesBar.propTypes = {
     PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     ).isRequired,
-  ).isRequired,
-  dividePath: PropTypes.arrayOf(
-    PropTypes.string.isRequired,
   ).isRequired,
   handleClick: PropTypes.func.isRequired,
   selfPage: PropTypes.number.isRequired,

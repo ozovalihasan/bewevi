@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../component/Loading';
 import { fetchPlantsList } from '../redux';
-import PagesContainer from './PagesContainer';
+import PagesBarContainer from './PagesBarContainer';
 import PlantListContainer from './PlantsListContainer';
 // import SearchContainer from './SearchContainer';
 import ToggleFilterSearchContainer from './ToggleFilterSearchContainer';
@@ -25,7 +25,7 @@ function App() {
       {loading && <Loading />}
       <ToggleFilterSearchContainer />
       <PlantListContainer />
-      <PagesContainer />
+      <PagesBarContainer />
 
     </div>
   );

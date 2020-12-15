@@ -4,7 +4,7 @@ import PagesBar from '../component/PagesBar';
 // import Pages from '../component/Pages';
 import { openPlantPage } from '../redux';
 
-const PagesContainer = () => {
+const PagesBarContainer = () => {
   const dispatch = useDispatch();
   const links = useSelector(state => state.plant.links);
 
@@ -28,4 +28,4 @@ const PagesContainer = () => {
   );
 };
 
-export default PagesContainer;
+export default PagesBarContainer;

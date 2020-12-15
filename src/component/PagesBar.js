@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 function PagesBar({
-  pages, handleClick, selfPage,
+  pages, selfPage, handleClick,
 }) {
   return (
     <div className="pages-bar main">
@@ -24,8 +24,8 @@ PagesBar.propTypes = {
       PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     ).isRequired,
   ).isRequired,
-  handleClick: PropTypes.func.isRequired,
   selfPage: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
 
 };
 export default PagesBar;

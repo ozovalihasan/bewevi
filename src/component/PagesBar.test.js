@@ -10,8 +10,17 @@ const pages = [
   [4, '4'],
   [5, 'Next'],
 ];
-const handleClick = jest.fn().mockImplementation(className => className + className);
 const selfPage = 4;
+let handleClick;
+
+beforeEach(() => {
+  handleClick = jest.fn(x => x + 2);
+});
+
+afterEach(() => {
+  handleClick.mockClear();
+});
+
 describe('<PagesBar />', () => {
   it('contains expected texts', () => {
     render(
@@ -21,6 +30,7 @@ describe('<PagesBar />', () => {
         selfPage={selfPage}
       />,
     );
+    handleClick('hasan3');
 
     expect(screen.getByText(/Previous/i)).toBeInTheDocument();
     expect(screen.getByText(/4/i)).toBeInTheDocument();
@@ -47,6 +57,7 @@ describe('<PagesBar />', () => {
     userEvent.click(screen.getByText(/Next/i));
     expect(handleClick.mock.calls.length).toBe(3);
     expect(handleClick.mock.calls[2][0]).toBe(5);
+    console.warn(handleClick.mock);
   });
 
   it('renders correctly', () => {

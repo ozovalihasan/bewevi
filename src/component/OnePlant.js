@@ -16,7 +16,6 @@ const OnePlant = ({
             <img
               src={plant.image_url}
               alt="plant"
-              width="100"
               onError={handleError}
               className="one-plant top-images"
             />

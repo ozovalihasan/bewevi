@@ -1,0 +1,90 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import renderer from 'react-test-renderer';
+import ReactTestUtils from 'react-dom/test-utils'; // ES6
+import { BrowserRouter } from 'react-router-dom';
+import OnePlant from './OnePlant';
+
+const handleError = jest.fn();
+const plant = {
+  image_url: 'www.ozovalihasan.com',
+  images: {
+    fruit: [{ imageUrl: 'www.ozovalihasan.com' }],
+    leaf: [{ imageUrl: 'www.ozovalihasan.com' }],
+    flower: [{ imageUrl: 'www.ozovalihasan.com' }],
+  },
+};
+const emptyImage = jest.fn(className => className);
+
+describe('<OnePlant />', () => {
+  it('contains expected texts', () => {
+    render(
+      <BrowserRouter>
+        <OnePlant
+          plant={{
+            image_url: null,
+            images: {
+              fruit: [null],
+              leaf: [null],
+              flower: [null],
+            },
+          }}
+          handleError={handleError}
+          emptyImage={emptyImage}
+        />
+      </BrowserRouter>,
+    );
+    expect(screen.getByText(/Fruit/i)).toBeInTheDocument();
+    expect(screen.getByText(/Leaf/i)).toBeInTheDocument();
+    expect(screen.getByText(/Flower/i)).toBeInTheDocument();
+  });
+
+  it('triggers onError when there are errors of img tags', () => {
+    const rendered = ReactTestUtils.renderIntoDocument(
+      <BrowserRouter>
+        <OnePlant
+          plant={plant}
+          handleError={handleError}
+          emptyImage={emptyImage}
+        />
+      </BrowserRouter>,
+    );
+    const imgs = ReactTestUtils.scryRenderedDOMComponentsWithTag(rendered, 'img');
+    imgs.map(img => ReactTestUtils.Simulate.error(img));
+    expect(handleError.mock.calls.length).toBe(4);
+  });
+
+  it('calls default image when necessary parts are not provided by API', () => {
+    render(
+      <BrowserRouter>
+        <OnePlant
+          plant={{
+            image_url: null,
+            images: {
+              fruit: [null],
+              leaf: [null],
+              flower: [null],
+            },
+          }}
+          handleError={handleError}
+          emptyImage={emptyImage}
+        />
+      </BrowserRouter>,
+    );
+    expect(emptyImage.mock.calls.length).toBe(4);
+  });
+
+  it('renders correctly', () => {
+    const tree = renderer.create(
+      <BrowserRouter>
+        <OnePlant
+          plant={plant}
+          handleError={handleError}
+          emptyImage={emptyImage}
+        />
+      </BrowserRouter>,
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

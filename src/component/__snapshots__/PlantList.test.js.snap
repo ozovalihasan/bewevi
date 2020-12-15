@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlantList /> renders correctly 1`] = `
+<div
+  className="plant-list main"
+>
+  {"id":1,"commonName":"foo1","scientific_name":"bar1","imageUrl":"foobar1"}
+  {"id":2,"commonName":"foo2","scientific_name":"bar2","imageUrl":"foobar2"}
+</div>
+`;

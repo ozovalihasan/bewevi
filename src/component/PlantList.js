@@ -9,7 +9,7 @@ const PlantList = ({ plants }) => (
         plant={{
           id: plant.id,
           commonName: plant.common_name,
-          scientific_name: plant.scientific_name,
+          scientificName: plant.scientific_name,
           imageUrl: plant.image_url,
         }}
       />
@@ -22,7 +22,7 @@ PlantList.propTypes = {
   plants: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     common_name: PropTypes.string.isRequired,
-    scientific_name: PropTypes.string.isRequired,
+    scientificName: PropTypes.string.isRequired,
     image_url: PropTypes.string.isRequired,
   })).isRequired,
 };

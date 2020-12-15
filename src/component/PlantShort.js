@@ -10,12 +10,14 @@ const PlantShort = ({
         {plant.commonName || 'No common name'}
       </div>
       <div>
-        {plant.scientific_name}
+        {plant.scientificName}
       </div>
     </div>
 
     <div className="plant-short image-container">
-      {plant.imageUrl ? <img src={`${plant.imageUrl}`} className="plant-short plant-image" alt="plant" onError={handleError} /> : emptyImage('plant-short plant-image')}
+      {plant.imageUrl
+        ? <img src={`${plant.imageUrl}`} className="plant-short plant-image" alt="plant" onError={handleError} />
+        : emptyImage('plant-short plant-image')}
     </div>
   </Link>
 );
@@ -23,9 +25,9 @@ const PlantShort = ({
 PlantShort.propTypes = {
   plant: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    commonName: PropTypes.string.isRequired,
-    scientific_name: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
+    commonName: PropTypes.string,
+    scientificName: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string,
   }).isRequired,
   handleClick: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,

@@ -26,7 +26,6 @@ import {
   openPlantPage,
   fetchSelectedPlant,
 } from './plantActions';
-import plantReducer from './plantReducer';
 
 let middlewares;
 let mockStore;
@@ -176,8 +175,6 @@ describe('Plant actions', () => {
     it('should dispatch addAllPlants when response is successful', async () => {
       axios.mockImplementationOnce(() => Promise.resolve({ data: 'Plants', status: 200 }));
       await store.dispatch(fetchPlantsSearch({ searchInput: 'Ivy' }));
-      console.warn(store.getActions());
-
       expect(store.getActions()).toEqual([
         { type: 'UPDATE_SEARCH', payload: 'Ivy' },
         { type: 'PLANT_REQUEST' },

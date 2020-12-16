@@ -33,66 +33,46 @@ export const updateSearch = ({ searchInput }) => ({
 });
 export const updateSelectedPlant = plant => ({
   type: UPDATE_SELECTED_PLANT,
-  payload: plant,
+  payload: plant.data,
 });
 
-export const fetchPlantsList = () => dispatch => {
+export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
   dispatch(plantRequest());
-  axios(`https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species?token=${process.env.REACT_APP_API_KEY}`)
+  axios(urlAPI)
     .then(response => {
-      dispatch(addAllPlants(response.data));
+      if (response.status.toString()[0] !== '2') {
+        throw response.status;
+      }
+      dispatch(usedDispatch(response.data));
     })
     .catch(error => {
       dispatch(plantFailure(error));
     });
+};
+
+export const fetchPlantsList = () => dispatch => {
+  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;
+  axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsUpdate = ({ filter, filterInput }) => dispatch => {
-  dispatch(plantRequest());
   dispatch(updateFilter({ filter, filterInput }));
   const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species?token=${process.env.REACT_APP_API_KEY}&filter[${filter}]=${encodeURI(filterInput)}`;
-  axios(urlAPI)
-    .then(response => {
-      dispatch(addAllPlants(response.data));
-    })
-    .catch(error => {
-      dispatch(plantFailure(error));
-    });
+  axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsSearch = ({ searchInput }) => dispatch => {
-  dispatch(plantRequest());
   dispatch(updateSearch({ searchInput }));
   const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/search?token=${process.env.REACT_APP_API_KEY}&q=${searchInput}&limit=12`;
-  axios(urlAPI)
-    .then(response => {
-      dispatch(addAllPlants(response.data));
-    })
-    .catch(error => {
-      dispatch(plantFailure(error));
-    });
+  axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const openPlantPage = pagePath => dispatch => {
-  dispatch(plantRequest());
   const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io${pagePath}&token=${process.env.REACT_APP_API_KEY}`;
-  axios(urlAPI)
-    .then(response => {
-      dispatch(addAllPlants(response.data));
-    })
-    .catch(error => {
-      dispatch(plantFailure(error));
-    });
+  axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchSelectedPlant = plantId => dispatch => {
-  dispatch(plantRequest());
   const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/${plantId}?token=${process.env.REACT_APP_API_KEY}`;
-  axios(urlAPI)
-    .then(response => {
-      dispatch(updateSelectedPlant(response.data.data));
-    })
-    .catch(error => {
-      dispatch(plantFailure(error));
-    });
+  axiosBlock(urlAPI, updateSelectedPlant, dispatch);
 };

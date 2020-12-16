@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> renders correctly 1`] = `
+<div
+  className="search main"
+>
+  <input
+    className="search search-input"
+    onChange={[MockFunction]}
+    placeholder="Search"
+    type="text"
+    value="foobar"
+  />
+  <button
+    className="search search-button"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    Search
+  </button>
+</div>
+`;

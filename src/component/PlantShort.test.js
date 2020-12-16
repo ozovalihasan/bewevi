@@ -10,7 +10,6 @@ import {
 import PlantShort from './PlantShort';
 
 let plant;
-
 let handleClick;
 let handleError;
 let emptyImage;
@@ -33,7 +32,7 @@ afterEach(() => {
   emptyImage.mockClear();
 });
 
-describe('<PagesBar />', () => {
+describe('<PlantShort />', () => {
   it('renders a link to one plant page', () => {
     render(
       <BrowserRouter>

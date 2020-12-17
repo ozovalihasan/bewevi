@@ -11,7 +11,7 @@ const PlantShortContainer = ({ plant }) => {
     dispatch(fetchSelectedPlant(plantId));
     return true;
   };
-  const emptyImage = className => <img src={emptyImageSVG} alt="Not provided" className={className} />;
+
   const handleError = e => {
     e.target.src = emptyImageSVG;
   };
@@ -21,7 +21,6 @@ const PlantShortContainer = ({ plant }) => {
       plant={plant}
       handleClick={handleClick}
       handleError={handleError}
-      emptyImage={emptyImage}
     />
   );
 };

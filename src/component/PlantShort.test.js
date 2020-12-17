@@ -12,24 +12,21 @@ import PlantShort from './PlantShort';
 let plant;
 let handleClick;
 let handleError;
-let emptyImage;
 
 beforeEach(() => {
-  handleClick = jest.fn().mockImplementation(plantId => plantId);
   handleError = jest.fn();
-  emptyImage = jest.fn(className => className);
   plant = {
     id: 1993,
     commonName: 'foo',
     scientificName: 'bar',
     imageUrl: 'foobar',
   };
+  handleClick = jest.fn();
 });
 
 afterEach(() => {
   handleClick.mockClear();
   handleError.mockClear();
-  emptyImage.mockClear();
 });
 
 describe('<PlantShort />', () => {
@@ -40,7 +37,6 @@ describe('<PlantShort />', () => {
           plant={plant}
           handleError={handleError}
           handleClick={handleClick}
-          emptyImage={emptyImage}
         />
         <Redirect to="/" />
         <Switch>
@@ -55,7 +51,6 @@ describe('<PlantShort />', () => {
     userEvent.click(screen.getByText(/bar/i));
     expect(screen.getByText(/One Plant Page/i)).toBeInTheDocument();
   });
-
   it('is triggering handleClick when the link is clicked', () => {
     render(
       <BrowserRouter>
@@ -63,10 +58,8 @@ describe('<PlantShort />', () => {
           plant={plant}
           handleError={handleError}
           handleClick={handleClick}
-          emptyImage={emptyImage}
         />
       </BrowserRouter>,
-
     );
 
     userEvent.click(screen.getByText(/bar/i));
@@ -81,7 +74,6 @@ describe('<PlantShort />', () => {
           plant={plant}
           handleError={handleError}
           handleClick={handleClick}
-          emptyImage={emptyImage}
         />
       </BrowserRouter>,
     );
@@ -90,23 +82,6 @@ describe('<PlantShort />', () => {
     expect(handleError.mock.calls.length).toBe(1);
   });
 
-  it('is calling default image if URL of image of the plant doesn\'t exist', () => {
-    plant.imageUrl = null;
-    render(
-      <BrowserRouter>
-        <PlantShort
-          plant={
-            plant
-          }
-          handleError={handleError}
-          handleClick={handleClick}
-          emptyImage={emptyImage}
-        />
-      </BrowserRouter>,
-    );
-    expect(emptyImage.mock.calls.length).toBe(1);
-    expect(emptyImage.mock.calls[0][0]).toBe('plant-short plant-image');
-  });
   it('is rendering \'no common name\' if common name of the plant doesn\'t exist ', () => {
     plant.commonName = null;
     render(
@@ -115,7 +90,6 @@ describe('<PlantShort />', () => {
           plant={plant}
           handleError={handleError}
           handleClick={handleClick}
-          emptyImage={emptyImage}
         />
       </BrowserRouter>,
     );
@@ -129,7 +103,6 @@ describe('<PlantShort />', () => {
           plant={plant}
           handleError={handleError}
           handleClick={handleClick}
-          emptyImage={emptyImage}
         />
       </BrowserRouter>,
     ).toJSON();

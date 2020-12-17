@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import EmptyImage from './EmptyImage';
 
 const PlantShort = ({
-  plant, handleClick, handleError, emptyImage,
+  plant, handleClick, handleError,
 }) => (
   <Link to="/one-plant" onClick={() => handleClick(plant.id)} className="plant-short main">
     <div className="plant-short description">
@@ -17,7 +18,7 @@ const PlantShort = ({
     <div className="plant-short image-container">
       {plant.imageUrl
         ? <img src={`${plant.imageUrl}`} className="plant-short plant-image" alt="plant" onError={handleError} />
-        : emptyImage('plant-short plant-image')}
+        : <EmptyImage className="plant-short plant-image" />}
     </div>
   </Link>
 );
@@ -31,7 +32,6 @@ PlantShort.propTypes = {
   }).isRequired,
   handleClick: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,
-  emptyImage: PropTypes.func.isRequired,
 
 };
 

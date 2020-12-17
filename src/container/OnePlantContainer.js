@@ -8,14 +8,6 @@ const OnePlantContainer = () => {
   const plant = useSelector(state => state.plant.chosen);
   const loading = useSelector(state => state.plant.loading);
 
-  const emptyImage = (className = '') => (
-    <img
-      src={emptyImageSVG}
-      alt="Not provided"
-      className={className}
-    />
-  );
-
   const handleError = e => {
     e.target.src = emptyImageSVG;
   };
@@ -23,11 +15,10 @@ const OnePlantContainer = () => {
   return (
     <>
       {loading && <Loading />}
-      {(plant.images) ? (
+      {plant.images ? (
         <OnePlant
           plant={plant}
           handleError={handleError}
-          emptyImage={emptyImage}
         />
       ) : (
         <div />

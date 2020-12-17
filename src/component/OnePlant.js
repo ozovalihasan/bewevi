@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import Logo from './Logo';
+import EmptyImage from './EmptyImage';
 
 const OnePlant = ({
-  plant, handleError, emptyImage,
+  plant, handleError,
 }) => (
   <div className="one-plant main">
     <div className="one-plant logo">
@@ -20,7 +21,7 @@ const OnePlant = ({
               className="one-plant top-images"
             />
           )
-          : emptyImage('one-plant top-images')}
+          : <EmptyImage className="one-plant top-images" />}
       </div>
       <div className="one-plant top-description">
 
@@ -63,7 +64,8 @@ const OnePlant = ({
             onError={handleError}
             className="one-plant bottom-images"
           />
-        ) : emptyImage('one-plant bottom-images')}
+        )
+          : <EmptyImage className="one-plant bottom-images" />}
       </div>
 
       <div className="one-plant one-property">
@@ -77,20 +79,23 @@ const OnePlant = ({
             alt={`Leaf of ${plant.common_name}`}
             onError={handleError}
           />
-        ) : emptyImage('one-plant bottom-images')}
+        )
+          : <EmptyImage className="one-plant bottom-images" />}
       </div>
       <div className="one-plant one-property">
         <div>
           Flower
         </div>
-        {plant.images.flower[0] ? (
-          <img
-            className="one-plant bottom-images"
-            src={plant.images.flower[0].image_url}
-            alt={`Leaf of ${plant.common_name}`}
-            onError={handleError}
-          />
-        ) : emptyImage('one-plant bottom-images')}
+        {plant.images.flower[0]
+          ? (
+            <img
+              className="one-plant bottom-images"
+              src={plant.images.flower[0].image_url}
+              alt={`Flower of ${plant.common_name}`}
+              onError={handleError}
+            />
+          )
+          : <EmptyImage className="one-plant bottom-images" />}
       </div>
     </div>
 
@@ -101,7 +106,6 @@ const OnePlant = ({
 OnePlant.propTypes = {
   plant: PropTypes.shape().isRequired,
   handleError: PropTypes.func.isRequired,
-  emptyImage: PropTypes.func.isRequired,
 };
 
 export default OnePlant;

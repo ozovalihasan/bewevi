@@ -110,7 +110,7 @@ exports[`<OnePlant /> renders correctly 1`] = `
         Flower
       </div>
       <img
-        alt="Leaf of undefined"
+        alt="Flower of undefined"
         className="one-plant bottom-images"
         onError={[MockFunction]}
       />

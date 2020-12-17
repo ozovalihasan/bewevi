@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PagesBar /> renders correctly 1`] = `
-<a
-  className="plant-short main"
-  href="/one-plant"
-  onClick={[Function]}
->
-  <div
-    className="plant-short description"
-  >
-    <div>
-      foo
-    </div>
-    <div>
-      bar
-    </div>
-  </div>
-  <div
-    className="plant-short image-container"
-  >
-    <img
-      alt="plant"
-      className="plant-short plant-image"
-      onError={[MockFunction]}
-      src="foobar"
-    />
-  </div>
-</a>
-`;
-
 exports[`<PlantShort /> renders correctly 1`] = `
 <a
   className="plant-short main"

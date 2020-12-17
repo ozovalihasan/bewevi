@@ -15,7 +15,6 @@ const plant = {
     flower: [{ imageUrl: 'www.ozovalihasan.com' }],
   },
 };
-const emptyImage = jest.fn(className => className);
 
 describe('<OnePlant />', () => {
   it('contains expected texts', () => {
@@ -31,7 +30,7 @@ describe('<OnePlant />', () => {
             },
           }}
           handleError={handleError}
-          emptyImage={emptyImage}
+
         />
       </BrowserRouter>,
     );
@@ -46,7 +45,7 @@ describe('<OnePlant />', () => {
         <OnePlant
           plant={plant}
           handleError={handleError}
-          emptyImage={emptyImage}
+
         />
       </BrowserRouter>,
     );
@@ -55,33 +54,13 @@ describe('<OnePlant />', () => {
     expect(handleError.mock.calls.length).toBe(4);
   });
 
-  it('calls default image when necessary parts are not provided by API', () => {
-    render(
-      <BrowserRouter>
-        <OnePlant
-          plant={{
-            image_url: null,
-            images: {
-              fruit: [null],
-              leaf: [null],
-              flower: [null],
-            },
-          }}
-          handleError={handleError}
-          emptyImage={emptyImage}
-        />
-      </BrowserRouter>,
-    );
-    expect(emptyImage.mock.calls.length).toBe(4);
-  });
-
   it('renders correctly', () => {
     const tree = renderer.create(
       <BrowserRouter>
         <OnePlant
           plant={plant}
           handleError={handleError}
-          emptyImage={emptyImage}
+
         />
       </BrowserRouter>,
     ).toJSON();

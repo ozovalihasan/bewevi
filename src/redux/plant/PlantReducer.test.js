@@ -61,7 +61,6 @@ describe('Plant Reducer', () => {
       type: UPDATE_SEARCH,
       payload: 'input of the searchbox',
     });
-    console.warn(state);
     expect(state).toEqual({ search: 'input of the searchbox', error: '' });
   });
 

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import PlantShortContainer from '../container/PlantShortContainer';
 
-const PlantList = ({ plants }) => (
-  <div className="plant-list main">
+const PlantsList = ({ plants }) => (
+  <div className="plants-list main">
     {plants.map(plant => (
       <PlantShortContainer
         key={plant.id}
@@ -18,13 +18,13 @@ const PlantList = ({ plants }) => (
 
 );
 
-PlantList.propTypes = {
+PlantsList.propTypes = {
   plants: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    common_name: PropTypes.string.isRequired,
-    scientificName: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired,
+    common_name: PropTypes.string,
+    scientific_name: PropTypes.string.isRequired,
+    image_url: PropTypes.string,
   })).isRequired,
 };
 
-export default PlantList;
+export default PlantsList;

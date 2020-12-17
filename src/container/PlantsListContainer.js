@@ -1,12 +1,11 @@
 import { useSelector } from 'react-redux';
-import PlantList from '../component/PlantList';
+import PlantsList from '../component/PlantsList';
 
-const PlantListContainer = () => {
+const PlantsListContainer = () => {
   const plants = useSelector(state => state.plant.plants);
   return (
-
-    <PlantList plants={plants} />
+    <PlantsList plants={plants} />
   );
 };
 
-export default PlantListContainer;
+export default PlantsListContainer;

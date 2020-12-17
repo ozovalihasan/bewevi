@@ -6,7 +6,6 @@ import emptyImageSVG from '../assets/emptyImage.svg';
 
 const PlantShortContainer = ({ plant }) => {
   const dispatch = useDispatch();
-
   const handleClick = plantId => {
     dispatch(fetchSelectedPlant(plantId));
     return true;

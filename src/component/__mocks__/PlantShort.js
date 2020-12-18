@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const PlantShort = ({
   plant,
@@ -8,9 +9,10 @@ const PlantShort = ({
   <>
     {JSON.stringify(plant)}
     <img src="#" alt="test" onError={handleError} />
-    <button type="button" onClick={() => handleClick(plant.id)}>
+    <Link to="/one-plant" onClick={() => handleClick(plant.id)}>
       test
-    </button>
+    </Link>
+
   </>
 );
 

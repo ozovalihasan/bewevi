@@ -1,46 +1,64 @@
 import { render, screen } from '@testing-library/react';
 import ReactTestUtils from 'react-dom/test-utils';
+import React from 'react';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import '@testing-library/jest-dom';
+import {
+  BrowserRouter, Redirect, Route, Switch,
+} from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+
 import PlantShortContainer from './PlantShortContainer';
 
-// const useDispatch = jest.fn();
-
-jest.mock('react-redux', () => ({
-  useDispatch: () => (jest.fn().mockImplementation(action => action)),
-}));
+const mockStore = configureStore();
+const store = mockStore();
+store.dispatch = jest.fn();
 
 jest.mock('../component/PlantShort');
 
-jest.mock('../redux', () => ({
-  fetchSelectedPlant: plantId => plantId()
-  ,
-}));
+const plant = { id: 1993 };
 
-const mockTest = jest.fn().mockReturnValue(() => 'hasan');
+let renderReadyComponent;
 
-const plant = { id: mockTest };
+beforeEach(() => {
+  renderReadyComponent = (
+    <Provider store={store}>
+      <BrowserRouter>
+        <PlantShortContainer plant={plant} />
+      </BrowserRouter>
+    </Provider>
+  );
+});
 
 describe('<PlantShortContainer />', () => {
-  it('is triggering handleError if there is an error related to img tag', () => {
+  it('is triggering handleClick and redirect the user to the linked page when the button is clicked ', () => {
     render(
-      <PlantShortContainer plant={plant} />,
+      <Provider store={store}>
+        <BrowserRouter>
+          <PlantShortContainer plant={plant} />
+          <Redirect to="/" />
+          <Switch>
+            <Route exact path="/" render={() => <>Main Page</>} />
+            <Route exact path="/one-plant" render={() => <div>One Plant Page</div>} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>,
     );
+    expect(store.dispatch).toHaveBeenCalledTimes(0);
+    userEvent.click(screen.getByText(/test/i));
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(screen.getByText(/One Plant Page/i)).toBeInTheDocument();
+  });
+
+  it('is triggering handleError if there is an error related to img tag', () => {
+    render(renderReadyComponent);
     ReactTestUtils.Simulate.error(screen.getByAltText('test'));
     expect(screen.getByAltText('test').src).toEqual('http://localhost/emptyImage.svg');
   });
 
-  it('is triggering handleClick when the button is clicked', () => {
-    render(
-      <PlantShortContainer plant={plant} />,
-    );
-    expect(mockTest.mock.calls.length).toEqual(0);
-    ReactTestUtils.Simulate.click(screen.getByText('test'));
-    expect(mockTest.mock.calls.length).toEqual(1);
-  });
-
   it('renders correctly', () => {
-    const renderedContainer = render(
-      <PlantShortContainer plant={plant} />,
-    );
+    const renderedContainer = render(renderReadyComponent);
     expect(renderedContainer).toMatchSnapshot();
   });
 });

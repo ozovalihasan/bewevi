@@ -1,33 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlantShortContainer /> renders correctly 1`] = `
+exports[`<FilterContainer /> renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      {"id":1993}
-      <img
-        alt="test"
-        src="#"
-      />
-      <a
-        href="/one-plant"
+      <div
+        class="pages-bar main"
       >
-        test
-      </a>
+        <button
+          class="pages-bar page-button "
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          class="pages-bar page-button current-page"
+          type="button"
+        >
+          42
+        </button>
+        <button
+          class="pages-bar page-button "
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </div>
   </body>,
   "container": <div>
-    {"id":1993}
-    <img
-      alt="test"
-      src="#"
-    />
-    <a
-      href="/one-plant"
+    <div
+      class="pages-bar main"
     >
-      test
-    </a>
+      <button
+        class="pages-bar page-button "
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="pages-bar page-button current-page"
+        type="button"
+      >
+        42
+      </button>
+      <button
+        class="pages-bar page-button "
+        type="button"
+      >
+        Next
+      </button>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

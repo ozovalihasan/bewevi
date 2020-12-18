@@ -22,7 +22,6 @@ describe('<PlantsList />', () => {
         plants={plants}
       />,
     );
-    screen.debug();
     expect(screen.getByText(/{"id":1,"commonName":"foo1","scientificName":"bar1","imageUrl":"foobar1"}/i)).toBeInTheDocument();
     expect(screen.getByText(/{"id":2,"commonName":"foo2","scientificName":"bar2","imageUrl":"foobar2"}/i)).toBeInTheDocument();
   });

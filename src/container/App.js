@@ -4,7 +4,6 @@ import Loading from '../component/Loading';
 import { fetchPlantsList } from '../redux';
 import PagesBarContainer from './PagesBarContainer';
 import PlantsListContainer from './PlantsListContainer';
-// import SearchContainer from './SearchContainer';
 import ToggleFilterSearchContainer from './ToggleFilterSearchContainer';
 
 function App() {

@@ -9,7 +9,11 @@ let handleClick;
 let shownContainer;
 let renderReadyComponent;
 
-jest.mock('./Logo');
+jest.mock('./Logo', () => {
+  const Logo = () => (<>This is a Logo</>);
+  Logo.displayName = 'Logo';
+  return Logo;
+});
 
 beforeEach(() => {
   handleClick = jest.fn();
@@ -33,9 +37,6 @@ describe('<ToggleFilterSearch />', () => {
     );
 
     expect(screen.getByText(/Shown Container/i)).toBeInTheDocument();
-    // expect(screen.getByText(/bar/i)).toBeInTheDocument();
-    // userEvent.click(screen.getByText(/bar/i));
-    // expect(screen.getByText(/One Plant Page/i)).toBeInTheDocument();
   });
 
   it('renders Logo component ', () => {

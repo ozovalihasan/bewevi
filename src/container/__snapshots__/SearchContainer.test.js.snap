@@ -18,7 +18,11 @@ Object {
           class="search search-button"
           type="button"
         >
-          Search
+          <img
+            alt="Search icon to search"
+            class="search search-icon"
+            src="search.svg"
+          />
         </button>
       </div>
     </div>
@@ -37,7 +41,11 @@ Object {
         class="search search-button"
         type="button"
       >
-        Search
+        <img
+          alt="Search icon to search"
+          class="search search-icon"
+          src="search.svg"
+        />
       </button>
     </div>
   </div>,

@@ -43,8 +43,8 @@ describe('<Search />', () => {
     render(
       renderReadyComponent,
     );
-    expect(screen.getByText(/Search/i)).toBeInTheDocument();
-    userEvent.click(screen.getByText(/Search/i));
+    expect(screen.getByAltText('Search icon to search')).toBeInTheDocument();
+    userEvent.click(screen.getByAltText('Search icon to search'));
     expect(handleClick.mock.calls.length).toBe(1);
   });
 

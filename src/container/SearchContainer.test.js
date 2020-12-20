@@ -49,7 +49,7 @@ describe('<SearchContainer />', () => {
       renderReadyComponent,
     );
     expect(store.dispatch.mock.calls.length).toEqual(0);
-    userEvent.click(screen.getByText('Search'));
+    userEvent.click(screen.getByAltText('Search icon to search'));
     expect(store.dispatch.mock.calls.length).toEqual(1);
   });
 

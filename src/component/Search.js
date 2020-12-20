@@ -17,7 +17,7 @@ const Search = ({
       type="button"
       onClick={handleClick}
     >
-      <img className="search search-icon" src={searchIcon} alt="search icon" />
+      <img className="search search-icon" src={searchIcon} alt="Search icon to search" />
     </button>
   </div>
 

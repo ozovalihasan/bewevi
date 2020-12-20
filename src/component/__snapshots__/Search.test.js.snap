@@ -16,7 +16,11 @@ exports[`<Search /> renders correctly 1`] = `
     onClick={[MockFunction]}
     type="button"
   >
-    Search
+    <img
+      alt="Search icon to search"
+      className="search search-icon"
+      src="search.svg"
+    />
   </button>
 </div>
 `;

@@ -20,7 +20,7 @@ exports[`<OnePlant /> renders correctly 1`] = `
       <div
         className="logo title"
       >
-        Ivy
+        vy
       </div>
     </a>
   </div>

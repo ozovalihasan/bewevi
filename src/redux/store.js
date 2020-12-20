@@ -8,7 +8,7 @@ export const initialState = {
   plant: {
     loading: false,
     initialized: false,
-    filter: 'All',
+    filter: 'all',
     filterInput: '',
     search: '',
     plants: [],

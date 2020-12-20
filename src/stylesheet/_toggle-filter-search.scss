@@ -1,10 +1,10 @@
 .toggle-filter-search {
   &.main {
-    display: grid;
+    display: flex;
     margin: 10px;
     padding: 10px;
-    width: auto;
-    grid-template-columns: 1fr 4fr 1fr;
+    // width: 100%;
+    // grid-template-columns: 1fr auto 1fr;
   }
 
   &.toggle-button {
@@ -12,6 +12,11 @@
     cursor: pointer;
     margin: 10px;
     padding: 10px;
-    font-size: 30px;
+    margin-left: 0;
+    padding-left: 0;
+
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
 }

@@ -14,7 +14,7 @@ exports[`<Logo /> renders correctly 1`] = `
   <div
     className="logo title"
   >
-    Ivy
+    vy
   </div>
 </a>
 `;

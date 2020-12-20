@@ -22,8 +22,8 @@ describe('<Logo />', () => {
       </BrowserRouter>,
     );
     expect(screen.getByText(/Second Page/i)).toBeInTheDocument();
-    expect(screen.getByText(/Ivy/i)).toBeInTheDocument();
-    userEvent.click(screen.getByText(/Ivy/i));
+    expect(screen.getByText(/vy/i)).toBeInTheDocument();
+    userEvent.click(screen.getByText(/vy/i));
     expect(screen.getByText(/Root Page/i)).toBeInTheDocument();
   });
 

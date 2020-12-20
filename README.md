@@ -8,7 +8,7 @@ I developed a catalogue application to list plants. The project includes the bas
 - Filtering plants
 The app is using [Trefle.io](https://trefle.io/) as API
 
-![screenshot](./ivy.gif)
+![screenshot](./public/Ivy.gif)
 
 ## Live Demo
 [Live Demo](https://ivy.ozovalihasan.com/)

@@ -6,6 +6,7 @@ I developed a catalogue application to list plants. The project includes the bas
 - Showing any plant with details
 - Searching any plant
 - Filtering plants
+
 The app is using [Trefle.io](https://trefle.io/) as API
 
 ![screenshot](./public/Ivy.gif)

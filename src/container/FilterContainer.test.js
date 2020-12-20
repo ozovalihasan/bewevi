@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 
 import FilterContainer from './FilterContainer';
 
-const initStore = { plant: { filterInput: '' } };
+const initStore = { plant: { filter: 'common_name', filterInput: 'iv' } };
 const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();
@@ -30,20 +30,11 @@ beforeEach(() => {
 });
 
 describe('<FilterContainer />', () => {
-  it('is triggering handleClick when the button is clicked', () => {
-    render(
-      renderReadyComponent,
-    );
-    expect(store.dispatch.mock.calls.length).toEqual(0);
-    userEvent.click(screen.getByText('Filter Results'));
-    expect(store.dispatch.mock.calls.length).toEqual(1);
-  });
-
   it('is triggering handleChangeFilter when the filter is changed', () => {
     render(
       renderReadyComponent,
     );
-    userEvent.selectOptions(screen.getByDisplayValue('Common Name'), ['Year']);
+    userEvent.selectOptions(screen.getByDisplayValue('Common Name'), ['year']);
     expect(setState.mock.calls).toEqual([['year']]);
   });
 
@@ -51,8 +42,17 @@ describe('<FilterContainer />', () => {
     render(
       renderReadyComponent,
     );
-    userEvent.type(screen.getByPlaceholderText('Filter'), 'I');
-    expect(setState.mock.calls).toEqual([['I']]);
+    userEvent.type(screen.getByPlaceholderText('Filter'), 'y');
+    expect(setState.mock.calls).toEqual([['ivy']]);
+  });
+
+  it('is triggering handleClick when the button is clicked', () => {
+    render(
+      renderReadyComponent,
+    );
+    expect(store.dispatch.mock.calls.length).toEqual(0);
+    userEvent.click(screen.getByAltText('Filter results'));
+    expect(store.dispatch.mock.calls.length).toEqual(1);
   });
 
   it('renders correctly', () => {

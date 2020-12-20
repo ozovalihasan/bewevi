@@ -5,35 +5,59 @@ import renderer from 'react-test-renderer';
 import Filter from './Filter';
 
 const handleChangeFilter = jest.fn();
-const plantProperties = [['common_name', 'Common Name']];
+const plantProperties = [['all', 'All'], ['common_name', 'Common Name']];
 const handleChangeInput = jest.fn();
 const handleClick = jest.fn();
-const filterInput = 'Microverse';
+let filter;
+let filterInput;
 
 describe('<Filter />', () => {
-  it('shows correct options and correct button name', () => {
-    render(<Filter
-      handleChangeFilter={handleChangeFilter}
-      plantProperties={plantProperties}
-      handleChangeInput={handleChangeInput}
-      handleClick={handleClick}
-      filterInput={filterInput}
-    />);
-    expect(screen.getByText('Common Name')).toBeTruthy();
-    expect(screen.getByText('Filter Results')).toBeTruthy();
-  });
+  // it('shows correct options, not input and filter icon', () => {
+  //   filter = 'all';
+  //   filterInput = '';
+  //   render(<Filter
+  //     handleChangeFilter={handleChangeFilter}
+  //     plantProperties={plantProperties}
+  //     handleChangeInput={handleChangeInput}
+  //     handleClick={handleClick}
+  //     filter={filter}
+  //     filterInput={filterInput}
+  //   />);
+  //   expect(screen.queryByDisplayValue('All')).toBeTruthy();
+  //   expect(screen.queryByPlaceholderText('Filter')).not.toBeTruthy();
+  //   expect(screen.queryByAltText('Filter Results')).not.toBeTruthy();
 
-  it('call correct function when the button is clicked', () => {
+  // });
+
+  // it('shows correct options and input, not filter icon when any options except \'all\' is chosen ', () => {
+  //   filter = 'common_name';
+  //   filterInput = '';
+  //   render(<Filter
+  //     handleChangeFilter={handleChangeFilter}
+  //     plantProperties={plantProperties}
+  //     handleChangeInput={handleChangeInput}
+  //     handleClick={handleClick}
+  //     filter={filter}
+  //     filterInput={filterInput}
+  //   />);
+  //   expect(screen.queryByDisplayValue('Common Name')).toBeTruthy();
+  //   expect(screen.queryByPlaceholderText('Filter')).toBeTruthy();
+  //   expect(screen.queryByAltText('Filter Results')).not.toBeTruthy();
+  // });
+  it('shows correct options, input and filter icon when input is not empty', () => {
+    filter = 'common_name';
+    filterInput = 'ivy';
     render(<Filter
       handleChangeFilter={handleChangeFilter}
       plantProperties={plantProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
+      filter={filter}
       filterInput={filterInput}
     />);
-    expect(handleClick.mock.calls.length).toBe(0);
-    fireEvent.click(screen.getByText('Filter Results'));
-    expect(handleClick.mock.calls.length).toBe(1);
+    expect(screen.queryByDisplayValue('Common Name')).toBeTruthy();
+    expect(screen.queryByPlaceholderText('Filter')).toBeTruthy();
+    expect(screen.queryByAltText('Filter results')).toBeTruthy();
   });
 
   it('renders correctly', () => {
@@ -42,6 +66,7 @@ describe('<Filter />', () => {
       plantProperties={plantProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
+      filter={filter}
       filterInput={filterInput}
     />).toJSON();
     expect(tree).toMatchSnapshot();

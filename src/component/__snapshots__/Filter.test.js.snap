@@ -8,7 +8,13 @@ exports[`<Filter /> renders correctly 1`] = `
     className="filter filter-select"
     name="filter"
     onChange={[MockFunction]}
+    value="common_name"
   >
+    <option
+      value="all"
+    >
+      All
+    </option>
     <option
       value="common_name"
     >
@@ -20,14 +26,18 @@ exports[`<Filter /> renders correctly 1`] = `
     onChange={[MockFunction]}
     placeholder="Filter"
     type="text"
-    value="Microverse"
+    value="ivy"
   />
   <button
     className="filter filter-button"
     onClick={[MockFunction]}
     type="button"
   >
-    Filter Results
+    <img
+      alt="Filter results"
+      className="filter filter-icon"
+      src="filter.svg"
+    />
   </button>
 </div>
 `;

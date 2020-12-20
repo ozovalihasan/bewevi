@@ -13,6 +13,11 @@ Object {
           name="filter"
         >
           <option
+            value="all"
+          >
+            All
+          </option>
+          <option
             value="common_name"
           >
             Common Name
@@ -42,13 +47,17 @@ Object {
           class="filter filter-input"
           placeholder="Filter"
           type="text"
-          value=""
+          value="iv"
         />
         <button
           class="filter filter-button"
           type="button"
         >
-          Filter Results
+          <img
+            alt="Filter results"
+            class="filter filter-icon"
+            src="filter.svg"
+          />
         </button>
       </div>
     </div>
@@ -61,6 +70,11 @@ Object {
         class="filter filter-select"
         name="filter"
       >
+        <option
+          value="all"
+        >
+          All
+        </option>
         <option
           value="common_name"
         >
@@ -91,13 +105,17 @@ Object {
         class="filter filter-input"
         placeholder="Filter"
         type="text"
-        value=""
+        value="iv"
       />
       <button
         class="filter filter-button"
         type="button"
       >
-        Filter Results
+        <img
+          alt="Filter results"
+          class="filter filter-icon"
+          src="filter.svg"
+        />
       </button>
     </div>
   </div>,

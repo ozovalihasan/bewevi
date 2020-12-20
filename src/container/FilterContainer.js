@@ -5,6 +5,7 @@ import { fetchPlantsUpdate } from '../redux';
 
 const FilterContainer = () => {
   const plantProperties = [
+    ['All', 'All'],
     ['common_name', 'Common Name'],
     ['year', 'Year'],
     ['scientific_name', 'Scientific Name'],
@@ -14,8 +15,7 @@ const FilterContainer = () => {
   const [filterInput, setFilterInput] = useState(
     useSelector(state => state.plant.filterInput),
   );
-  const [filter, setFilter] = useState(plantProperties[0]);
-
+  const [filter, setFilter] = useState(plantProperties[0][0]);
   const dispatch = useDispatch();
 
   const handleChangeFilter = e => {
@@ -36,6 +36,7 @@ const FilterContainer = () => {
       plantProperties={plantProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
+      filter={filter}
       filterInput={filterInput}
     />
   );

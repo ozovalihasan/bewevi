@@ -1,24 +1,28 @@
 .filter {
   &.main {
     display: flex;
-    justify-content: center;
+    margin-left: 0;
     padding: 20px;
+    padding-right: 10px;
     height: auto;
+    width: 100%;
   }
 
   &.filter-select {
     outline: none;
     padding: 5px 0 5px 15px;
     border: 1px solid rgb(156, 156, 156);
-    font-size: 20px;
+    border-right: none;
     background-color: transparent;
     border-radius: 10px 0 0 10px;
     -moz-appearance: none;
     -webkit-appearance: none;
-    width: 100px;
+    width: 1px;
+    max-width: 100%;
+    flex-grow: 1;
 
     @media (min-width: 768px) {
-      width: 200px;
+      font-size: 20px;
     }
   }
 
@@ -26,10 +30,14 @@
     outline: none;
     padding: 5px 0 5px 15px;
     border: 1px solid rgb(156, 156, 156);
-    font-size: 30px;
     border-right: none;
-    border-left: none;
-    width: 100px;
+    flex-grow: 1;
+    width: 0;
+
+    @media (min-width: 768px) {
+      flex-grow: 1;
+      font-size: 30px;
+    }
   }
 
   &.filter-button {
@@ -37,9 +45,14 @@
     border: 1px solid rgb(156, 156, 156);
     border-left: none;
     border-radius: 0 10px 10px 0;
-    padding: 10px;
-    font-size: 30px;
+    padding: 5px;
+    padding-right: 10px;
     flex-shrink: 0;
+    height: 32px;
+
+    @media (min-width: 768px) {
+      height: auto;
+    }
 
     &:hover {
       cursor: pointer;
@@ -47,6 +60,11 @@
   }
 
   &.filter-icon {
-    height: 30px;
+    height: 20px;
+    display: block;
+
+    @media (min-width: 768px) {
+      height: 40px;
+    }
   }
 }

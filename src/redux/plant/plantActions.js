@@ -50,29 +50,31 @@ export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
     });
 };
 
+const REACT_APP_SERVER_URL = 'https://trefle.io';
+
 export const fetchPlantsList = () => dispatch => {
-  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsUpdate = ({ filter, filterInput }) => dispatch => {
   dispatch(updateFilter({ filter, filterInput }));
-  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}&filter[${filter}]=${encodeURI(filterInput)}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}&filter[${filter}]=${encodeURI(filterInput)}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsSearch = ({ searchInput }) => dispatch => {
   dispatch(updateSearch({ searchInput }));
-  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species/search?token=${process.env.REACT_APP_API_KEY}&q=${searchInput}&limit=12`;
+  const urlAPI = `${REACT_APP_SERVER_URL}/api/v1/species/search?token=${process.env.REACT_APP_API_KEY}&q=${searchInput}&limit=12`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const openPlantPage = pagePath => dispatch => {
-  const urlAPI = `${process.env.REACT_APP_SERVER_URL}${pagePath}&token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}${pagePath}&token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchSelectedPlant = plantId => dispatch => {
-  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species/${plantId}?token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}/api/v1/species/${plantId}?token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, updateSelectedPlant, dispatch);
 };

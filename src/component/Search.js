@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import searchIcon from '../assets/search.svg';
 
 const Search = ({
   handleChangeInput, handleClick, searchInput,
@@ -16,7 +17,7 @@ const Search = ({
       type="button"
       onClick={handleClick}
     >
-      Search
+      <img className="search search-icon" src={searchIcon} alt="search icon" />
     </button>
   </div>
 

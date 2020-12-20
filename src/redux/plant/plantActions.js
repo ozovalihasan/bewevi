@@ -51,28 +51,28 @@ export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
 };
 
 export const fetchPlantsList = () => dispatch => {
-  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsUpdate = ({ filter, filterInput }) => dispatch => {
   dispatch(updateFilter({ filter, filterInput }));
-  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species?token=${process.env.REACT_APP_API_KEY}&filter[${filter}]=${encodeURI(filterInput)}`;
+  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}&filter[${filter}]=${encodeURI(filterInput)}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchPlantsSearch = ({ searchInput }) => dispatch => {
   dispatch(updateSearch({ searchInput }));
-  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/search?token=${process.env.REACT_APP_API_KEY}&q=${searchInput}&limit=12`;
+  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species/search?token=${process.env.REACT_APP_API_KEY}&q=${searchInput}&limit=12`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const openPlantPage = pagePath => dispatch => {
-  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io${pagePath}&token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${process.env.REACT_APP_SERVER_URL}${pagePath}&token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, addAllPlants, dispatch);
 };
 
 export const fetchSelectedPlant = plantId => dispatch => {
-  const urlAPI = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/${plantId}?token=${process.env.REACT_APP_API_KEY}`;
+  const urlAPI = `${process.env.REACT_APP_SERVER_URL}/api/v1/species/${plantId}?token=${process.env.REACT_APP_API_KEY}`;
   axiosBlock(urlAPI, updateSelectedPlant, dispatch);
 };

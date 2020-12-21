@@ -2,11 +2,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import renderer from 'react-test-renderer';
-import PlantsList from './PlantsList';
+import PokemonsList from './PokemonsList';
 
-jest.mock('../container/PlantShortContainer');
+jest.mock('../container/PokemonShortContainer');
 
-const plants = [
+const pokemons = [
   {
     id: 1, common_name: 'foo1', scientific_name: 'bar1', image_url: 'foobar1',
   },
@@ -15,11 +15,11 @@ const plants = [
   },
 ];
 
-describe('<PlantsList />', () => {
+describe('<PokemonsList />', () => {
   it('renders other component', () => {
     render(
-      <PlantsList
-        plants={plants}
+      <PokemonsList
+        pokemons={pokemons}
       />,
     );
     expect(screen.getByText(/{"id":1,"commonName":"foo1","scientificName":"bar1","imageUrl":"foobar1"}/i)).toBeInTheDocument();
@@ -28,8 +28,8 @@ describe('<PlantsList />', () => {
 
   it('renders correctly', () => {
     const tree = renderer.create(
-      <PlantsList
-        plants={plants}
+      <PokemonsList
+        pokemons={pokemons}
       />,
     ).toJSON();
     expect(tree).toMatchSnapshot();

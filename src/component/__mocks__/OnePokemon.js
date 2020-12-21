@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 
-const OnePlant = ({
-  plant,
+const OnePokemon = ({
+  pokemon,
   handleError,
 }) => (
   <>
-    {JSON.stringify(plant)}
+    {JSON.stringify(pokemon)}
     <img src="#" alt="test" onError={handleError} />
   </>
 );
 
-OnePlant.propTypes = {
-  plant: PropTypes.shape().isRequired,
+OnePokemon.propTypes = {
+  pokemon: PropTypes.shape().isRequired,
   handleError: PropTypes.func.isRequired,
 };
 
-export default OnePlant;
+export default OnePokemon;

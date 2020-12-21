@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import PlantsListContainer from './PlantsListContainer';
+import PokemonsListContainer from './PokemonsListContainer';
 
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
@@ -12,8 +12,8 @@ jest.mock('react-redux', () => ({
 beforeEach(() => {
   useSelector.mockImplementation(selector => selector(
     {
-      plant: {
-        plants: [{
+      pokemon: {
+        pokemons: [{
           id: 1, common_name: 'Ivy common', scientific_name: 'Ivy scientific', image_url: 'Ivy.jpg',
         }, {
           id: 2, common_name: 'Ivy common2', scientific_name: 'Ivy scientific2', image_url: 'Ivy2.jpg',
@@ -23,11 +23,11 @@ beforeEach(() => {
   ));
 });
 
-describe('<PlantsListContainer />', () => {
-  it('is rendering PlantsList component', () => {
+describe('<PokemonsListContainer />', () => {
+  it('is rendering PokemonsList component', () => {
     render(
       <BrowserRouter>
-        <PlantsListContainer />
+        <PokemonsListContainer />
       </BrowserRouter>,
     );
     expect(screen.getAllByText(/Ivy scientific/i).length).toEqual(2);
@@ -36,7 +36,7 @@ describe('<PlantsListContainer />', () => {
   it('renders correctly', () => {
     const renderedContainer = render(
       <BrowserRouter>
-        <PlantsListContainer />
+        <PokemonsListContainer />
       </BrowserRouter>,
     );
     expect(renderedContainer).toMatchSnapshot();

@@ -5,13 +5,13 @@ import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 
 export const initialState = {
-  plant: {
+  pokemon: {
     loading: false,
     initialized: false,
     filter: 'all',
     filterInput: '',
     search: '',
-    plants: [],
+    pokemons: [],
     chosen: {},
     links: {},
     error: '',

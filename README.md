@@ -1,11 +1,11 @@
 # Ivy
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-I developed a catalogue application to list plants. The project includes the basic features of
-- Listing plants with general information
-- Showing any plant with details
-- Searching any plant
-- Filtering plants
+I developed a catalogue application to list pokemons. The project includes the basic features of
+- Listing pokemons with general information
+- Showing any pokemon with details
+- Searching any pokemon
+- Filtering pokemons
 
 The app is using [Trefle.io](https://trefle.io/) as API
 
@@ -27,9 +27,9 @@ Make sure Node.js is running on your local machine
 
 - Clone this repository
 - Open terminal
-- Change directory by using `cd plant`
+- Change directory by using `cd pokemon`
 - Run `npm install`
-- Create `.env.local` file in the plant folder
+- Create `.env.local` file in the pokemon folder
 - Sign in `https://trefle.io/` and get your API key
 - Add `REACT_APP_API_KEY=YourAPIKey>` to .env.local file
 
@@ -44,7 +44,7 @@ Make sure Node.js is running on your local machine
 
 - Clone this repository
 - Open terminal
-- Change directory by using `cd plant`
+- Change directory by using `cd pokemon`
 - Run `npm install`
 - Run `npm test` to test all files
 

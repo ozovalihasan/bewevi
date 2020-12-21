@@ -9,15 +9,15 @@ import {
 } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
-import PlantShortContainer from './PlantShortContainer';
+import PokemonShortContainer from './PokemonShortContainer';
 
 const mockStore = configureStore();
 const store = mockStore();
 store.dispatch = jest.fn();
 
-jest.mock('../component/PlantShort');
+jest.mock('../component/PokemonShort');
 
-const plant = { id: 1993 };
+const pokemon = { id: 1993 };
 
 let renderReadyComponent;
 
@@ -25,22 +25,22 @@ beforeEach(() => {
   renderReadyComponent = (
     <Provider store={store}>
       <BrowserRouter>
-        <PlantShortContainer plant={plant} />
+        <PokemonShortContainer pokemon={pokemon} />
       </BrowserRouter>
     </Provider>
   );
 });
 
-describe('<PlantShortContainer />', () => {
+describe('<PokemonShortContainer />', () => {
   it('is triggering handleClick and redirect the user to the linked page when the button is clicked ', () => {
     render(
       <Provider store={store}>
         <BrowserRouter>
-          <PlantShortContainer plant={plant} />
+          <PokemonShortContainer pokemon={pokemon} />
           <Redirect to="/" />
           <Switch>
             <Route exact path="/" render={() => <>Main Page</>} />
-            <Route exact path="/one-plant" render={() => <div>One Plant Page</div>} />
+            <Route exact path="/one-pokemon" render={() => <div>One Pokemon Page</div>} />
           </Switch>
         </BrowserRouter>
       </Provider>,
@@ -48,7 +48,7 @@ describe('<PlantShortContainer />', () => {
     expect(store.dispatch).toHaveBeenCalledTimes(0);
     userEvent.click(screen.getByText(/test/i));
     expect(store.dispatch).toHaveBeenCalledTimes(1);
-    expect(screen.getByText(/One Plant Page/i)).toBeInTheDocument();
+    expect(screen.getByText(/One Pokemon Page/i)).toBeInTheDocument();
   });
 
   it('is triggering handleError if there is an error related to img tag', () => {

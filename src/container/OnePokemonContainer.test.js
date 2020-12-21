@@ -5,19 +5,19 @@ import { useSelector } from 'react-redux';
 
 import ReactTestUtils from 'react-dom/test-utils';
 import renderer from 'react-test-renderer';
-import OnePlantContainer from './OnePlantContainer';
+import OnePokemonContainer from './OnePokemonContainer';
 
 jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
   useSelector: jest.fn(),
 }));
 
-jest.mock('../component/OnePlant');
+jest.mock('../component/OnePokemon');
 
 beforeEach(() => {
   useSelector.mockImplementation(selector => selector(
     {
-      plant: {
+      pokemon: {
         chosen: {
           common_name: 'Ivy common',
           scientific_name: 'Ivy scientific',
@@ -34,10 +34,10 @@ beforeEach(() => {
   ));
 });
 
-describe('<PlantsListContainer />', () => {
+describe('<PokemonsListContainer />', () => {
   it('is connecting to store', () => {
     render(
-      <OnePlantContainer />,
+      <OnePokemonContainer />,
     );
     expect(screen.getByText(/Ivy scientific/i)).toBeInTheDocument();
     expect(screen.getByText(/Ivy common/i)).toBeInTheDocument();
@@ -45,7 +45,7 @@ describe('<PlantsListContainer />', () => {
 
   it('is updating if there is an error when images are being installed', () => {
     render(
-      <OnePlantContainer />,
+      <OnePokemonContainer />,
     );
     expect(screen.getByAltText('test').src).toEqual('http://localhost/#');
 
@@ -56,20 +56,20 @@ describe('<PlantsListContainer />', () => {
   it('renders Loading if loading is \'false\' in store', () => {
     useSelector.mockImplementation(selector => selector(
       {
-        plant:
+        pokemon:
         {
           chosen: { },
           loading: true,
         },
       },
     ));
-    const tree = renderer.create(<OnePlantContainer />).toJSON();
+    const tree = renderer.create(<OnePokemonContainer />).toJSON();
     expect(tree[0].props.className).toEqual('loading main');
   });
 
   it('renders correctly', () => {
     const renderedContainer = render(
-      <OnePlantContainer />,
+      <OnePokemonContainer />,
     );
     expect(renderedContainer).toMatchSnapshot();
   });

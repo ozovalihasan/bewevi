@@ -8,7 +8,7 @@ import userEvent from '@testing-library/user-event';
 import PagesBarContainer from './PagesBarContainer';
 
 const initStore = {
-  plant: {
+  pokemon: {
     links: {
       last: 'ozovalihasan.com/page=43&word=ivy',
       self: 'ozovalihasan.com/page=42&word=ivy',

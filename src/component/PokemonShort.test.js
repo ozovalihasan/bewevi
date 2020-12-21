@@ -7,15 +7,15 @@ import ReactTestUtils from 'react-dom/test-utils';
 import {
   BrowserRouter, Redirect, Route, Switch,
 } from 'react-router-dom';
-import PlantShort from './PlantShort';
+import PokemonShort from './PokemonShort';
 
-let plant;
+let pokemon;
 let handleClick;
 let handleError;
 
 beforeEach(() => {
   handleError = jest.fn();
-  plant = {
+  pokemon = {
     id: 1993,
     commonName: 'foo',
     scientificName: 'bar',
@@ -29,19 +29,19 @@ afterEach(() => {
   handleError.mockClear();
 });
 
-describe('<PlantShort />', () => {
-  it('renders a link to one plant page', () => {
+describe('<PokemonShort />', () => {
+  it('renders a link to one pokemon page', () => {
     render(
       <BrowserRouter>
-        <PlantShort
-          plant={plant}
+        <PokemonShort
+          pokemon={pokemon}
           handleError={handleError}
           handleClick={handleClick}
         />
         <Redirect to="/" />
         <Switch>
           <Route exact path="/" render={() => <>Main Page</>} />
-          <Route exact path="/one-plant" render={() => <div>One Plant Page</div>} />
+          <Route exact path="/one-pokemon" render={() => <div>One Pokemon Page</div>} />
         </Switch>
       </BrowserRouter>,
     );
@@ -49,13 +49,13 @@ describe('<PlantShort />', () => {
     expect(screen.getByText(/Main Page/i)).toBeInTheDocument();
     expect(screen.getByText(/bar/i)).toBeInTheDocument();
     userEvent.click(screen.getByText(/bar/i));
-    expect(screen.getByText(/One Plant Page/i)).toBeInTheDocument();
+    expect(screen.getByText(/One Pokemon Page/i)).toBeInTheDocument();
   });
   it('is triggering handleClick when the link is clicked', () => {
     render(
       <BrowserRouter>
-        <PlantShort
-          plant={plant}
+        <PokemonShort
+          pokemon={pokemon}
           handleError={handleError}
           handleClick={handleClick}
         />
@@ -70,8 +70,8 @@ describe('<PlantShort />', () => {
   it('triggers onError when there are errors of img tags', () => {
     const rendered = ReactTestUtils.renderIntoDocument(
       <BrowserRouter>
-        <PlantShort
-          plant={plant}
+        <PokemonShort
+          pokemon={pokemon}
           handleError={handleError}
           handleClick={handleClick}
         />
@@ -82,12 +82,12 @@ describe('<PlantShort />', () => {
     expect(handleError.mock.calls.length).toBe(1);
   });
 
-  it('is rendering \'no common name\' if common name of the plant doesn\'t exist ', () => {
-    plant.commonName = null;
+  it('is rendering \'no common name\' if common name of the pokemon doesn\'t exist ', () => {
+    pokemon.commonName = null;
     render(
       <BrowserRouter>
-        <PlantShort
-          plant={plant}
+        <PokemonShort
+          pokemon={pokemon}
           handleError={handleError}
           handleClick={handleClick}
         />
@@ -99,8 +99,8 @@ describe('<PlantShort />', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
       <BrowserRouter>
-        <PlantShort
-          plant={plant}
+        <PokemonShort
+          pokemon={pokemon}
           handleError={handleError}
           handleClick={handleClick}
         />

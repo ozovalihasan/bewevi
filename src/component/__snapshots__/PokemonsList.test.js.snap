@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlantsList /> renders correctly 1`] = `
+exports[`<PokemonsList /> renders correctly 1`] = `
 <div
-  className="plants-list main"
+  className="pokemons-list main"
 >
   {"id":1,"commonName":"foo1","scientificName":"bar1","imageUrl":"foobar1"}
   {"id":2,"commonName":"foo2","scientificName":"bar2","imageUrl":"foobar2"}

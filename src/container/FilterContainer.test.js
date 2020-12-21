@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 
 import FilterContainer from './FilterContainer';
 
-const initStore = { plant: { filter: 'common_name', filterInput: 'iv' } };
+const initStore = { pokemon: { filter: 'common_name', filterInput: 'iv' } };
 const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();

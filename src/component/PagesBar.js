@@ -24,7 +24,7 @@ PagesBar.propTypes = {
       PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     ).isRequired,
   ).isRequired,
-  selfPage: PropTypes.number.isRequired,
+  selfPage: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
 
 };

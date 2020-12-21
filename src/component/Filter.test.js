@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import Filter from './Filter';
 
 const handleChangeFilter = jest.fn();
-const plantProperties = [['all', 'All'], ['common_name', 'Common Name']];
+const pokemonProperties = [['all', 'All'], ['common_name', 'Common Name']];
 const handleChangeInput = jest.fn();
 const handleClick = jest.fn();
 let filter;
@@ -17,7 +17,7 @@ describe('<Filter />', () => {
     filterInput = '';
     render(<Filter
       handleChangeFilter={handleChangeFilter}
-      plantProperties={plantProperties}
+      pokemonProperties={pokemonProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
       filter={filter}
@@ -33,7 +33,7 @@ describe('<Filter />', () => {
     filterInput = '';
     render(<Filter
       handleChangeFilter={handleChangeFilter}
-      plantProperties={plantProperties}
+      pokemonProperties={pokemonProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
       filter={filter}
@@ -49,7 +49,7 @@ describe('<Filter />', () => {
     filterInput = 'ivy';
     render(<Filter
       handleChangeFilter={handleChangeFilter}
-      plantProperties={plantProperties}
+      pokemonProperties={pokemonProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
       filter={filter}
@@ -63,7 +63,7 @@ describe('<Filter />', () => {
   it('renders correctly', () => {
     const tree = renderer.create(<Filter
       handleChangeFilter={handleChangeFilter}
-      plantProperties={plantProperties}
+      pokemonProperties={pokemonProperties}
       handleChangeInput={handleChangeInput}
       handleClick={handleClick}
       filter={filter}

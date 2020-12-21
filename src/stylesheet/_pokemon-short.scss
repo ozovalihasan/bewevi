@@ -1,4 +1,4 @@
-.plant-short {
+.pokemon-short {
   &.main {
     background-color: $first-color;
     padding: 20px 10px 40px 10px;
@@ -21,7 +21,7 @@
     align-items: center;
   }
 
-  &.plant-image {
+  &.pokemon-image {
     width: 100%;
     border-radius: 15px;
   }

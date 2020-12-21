@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import filterIcon from '../assets/filter.svg';
 
 const Filter = ({
-  handleChangeFilter, plantProperties, handleChangeInput, handleClick, filter, filterInput,
+  handleChangeFilter, pokemonProperties, handleChangeInput, handleClick, filter, filterInput,
 }) => (
   <div className="filter main">
     <select className="filter filter-select" name="filter" onChange={handleChangeFilter} value={filter}>
-      {plantProperties.map(plantProperties => (
-        <option key={plantProperties[0]} value={plantProperties[0]}>
-          {plantProperties[1]}
+      {pokemonProperties.map(pokemonProperties => (
+        <option key={pokemonProperties[0]} value={pokemonProperties[0]}>
+          {pokemonProperties[1]}
         </option>
       ))}
     </select>
@@ -33,7 +33,7 @@ const Filter = ({
 
 Filter.propTypes = {
   handleChangeFilter: PropTypes.func.isRequired,
-  plantProperties:
+  pokemonProperties:
     PropTypes.arrayOf(
       PropTypes.arrayOf(
         PropTypes.string.isRequired,

@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlantsListContainer /> renders correctly 1`] = `
+exports[`<PokemonsListContainer /> renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div
-        class="plants-list main"
+        class="pokemons-list main"
       >
         <a
-          class="plant-short main"
-          href="/one-plant"
+          class="pokemon-short main"
+          href="/one-pokemon"
         >
           <div
-            class="plant-short description"
+            class="pokemon-short description"
           >
             <div>
               Ivy common
@@ -23,21 +23,21 @@ Object {
             </div>
           </div>
           <div
-            class="plant-short image-container"
+            class="pokemon-short image-container"
           >
             <img
-              alt="plant"
-              class="plant-short plant-image"
+              alt="pokemon"
+              class="pokemon-short pokemon-image"
               src="Ivy.jpg"
             />
           </div>
         </a>
         <a
-          class="plant-short main"
-          href="/one-plant"
+          class="pokemon-short main"
+          href="/one-pokemon"
         >
           <div
-            class="plant-short description"
+            class="pokemon-short description"
           >
             <div>
               Ivy common2
@@ -47,11 +47,11 @@ Object {
             </div>
           </div>
           <div
-            class="plant-short image-container"
+            class="pokemon-short image-container"
           >
             <img
-              alt="plant"
-              class="plant-short plant-image"
+              alt="pokemon"
+              class="pokemon-short pokemon-image"
               src="Ivy2.jpg"
             />
           </div>
@@ -61,14 +61,14 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="plants-list main"
+      class="pokemons-list main"
     >
       <a
-        class="plant-short main"
-        href="/one-plant"
+        class="pokemon-short main"
+        href="/one-pokemon"
       >
         <div
-          class="plant-short description"
+          class="pokemon-short description"
         >
           <div>
             Ivy common
@@ -78,21 +78,21 @@ Object {
           </div>
         </div>
         <div
-          class="plant-short image-container"
+          class="pokemon-short image-container"
         >
           <img
-            alt="plant"
-            class="plant-short plant-image"
+            alt="pokemon"
+            class="pokemon-short pokemon-image"
             src="Ivy.jpg"
           />
         </div>
       </a>
       <a
-        class="plant-short main"
-        href="/one-plant"
+        class="pokemon-short main"
+        href="/one-pokemon"
       >
         <div
-          class="plant-short description"
+          class="pokemon-short description"
         >
           <div>
             Ivy common2
@@ -102,11 +102,11 @@ Object {
           </div>
         </div>
         <div
-          class="plant-short image-container"
+          class="pokemon-short image-container"
         >
           <img
-            alt="plant"
-            class="plant-short plant-image"
+            alt="pokemon"
+            class="pokemon-short pokemon-image"
             src="Ivy2.jpg"
           />
         </div>

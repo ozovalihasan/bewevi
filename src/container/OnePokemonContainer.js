@@ -1,23 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import OnePlant from '../component/OnePlant';
+import OnePokemon from '../component/OnePokemon';
 import emptyImageSVG from '../assets/emptyImage.svg';
 import Loading from '../component/Loading';
 
-const OnePlantContainer = () => {
-  const plant = useSelector(state => state.plant.chosen);
-  const loading = useSelector(state => state.plant.loading);
+const OnePokemonContainer = () => {
+  const pokemon = useSelector(state => state.pokemon.chosen);
+  const loading = useSelector(state => state.pokemon.loading);
 
   const handleError = e => {
     e.target.src = emptyImageSVG;
   };
-
+  console.warn(pokemon);
   return (
     <>
       {loading && <Loading />}
-      {plant.images ? (
-        <OnePlant
-          plant={plant}
+      {pokemon.id ? (
+        <OnePokemon
+          pokemon={pokemon}
           handleError={handleError}
         />
       ) : (
@@ -27,4 +27,4 @@ const OnePlantContainer = () => {
   );
 };
 
-export default OnePlantContainer;
+export default OnePokemonContainer;

@@ -4,10 +4,10 @@ import '@testing-library/jest-dom';
 import renderer from 'react-test-renderer';
 import ReactTestUtils from 'react-dom/test-utils';
 import { BrowserRouter } from 'react-router-dom';
-import OnePlant from './OnePlant';
+import OnePokemon from './OnePokemon';
 
 const handleError = jest.fn();
-const plant = {
+const pokemon = {
   image_url: 'www.ozovalihasan.com',
   images: {
     fruit: [{ imageUrl: 'www.ozovalihasan.com' }],
@@ -16,12 +16,12 @@ const plant = {
   },
 };
 
-describe('<OnePlant />', () => {
+describe('<OnePokemon />', () => {
   it('contains expected texts', () => {
     render(
       <BrowserRouter>
-        <OnePlant
-          plant={{
+        <OnePokemon
+          pokemon={{
             image_url: null,
             images: {
               fruit: [null],
@@ -42,8 +42,8 @@ describe('<OnePlant />', () => {
   it('triggers onError when there are errors of img tags', () => {
     const rendered = ReactTestUtils.renderIntoDocument(
       <BrowserRouter>
-        <OnePlant
-          plant={plant}
+        <OnePokemon
+          pokemon={pokemon}
           handleError={handleError}
 
         />
@@ -57,8 +57,8 @@ describe('<OnePlant />', () => {
   it('renders correctly', () => {
     const tree = renderer.create(
       <BrowserRouter>
-        <OnePlant
-          plant={plant}
+        <OnePokemon
+          pokemon={pokemon}
           handleError={handleError}
 
         />

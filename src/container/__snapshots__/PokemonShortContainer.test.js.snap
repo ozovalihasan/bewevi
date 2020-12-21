@@ -1,23 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlantsListContainer /> renders correctly 1`] = `
+exports[`<PokemonShortContainer /> renders correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      {"common_name":"Ivy common","scientific_name":"Ivy scientific","image_url":"Ivy.jpg","images":{"fruit":[{}],"leaf":["image.jpg"],"flower":["image.jpg"]}}
+      {"id":1993}
       <img
         alt="test"
         src="#"
       />
+      <a
+        href="/one-pokemon"
+      >
+        test
+      </a>
     </div>
   </body>,
   "container": <div>
-    {"common_name":"Ivy common","scientific_name":"Ivy scientific","image_url":"Ivy.jpg","images":{"fruit":[{}],"leaf":["image.jpg"],"flower":["image.jpg"]}}
+    {"id":1993}
     <img
       alt="test"
       src="#"
     />
+    <a
+      href="/one-pokemon"
+    >
+      test
+    </a>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

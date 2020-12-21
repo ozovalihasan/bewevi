@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event';
 
 import SearchContainer from './SearchContainer';
 
-const initStore = { plant: { search: 'Iv' } };
+const initStore = { pokemon: { search: 'Iv' } };
 const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();

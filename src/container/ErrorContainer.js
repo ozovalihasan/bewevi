@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Error from '../component/Error';
 
 const ErrorContainer = () => {
-  const error = useSelector(state => state.plant.error.message);
+  const error = useSelector(state => state.pokemon.error.message);
 
   return (
     <>

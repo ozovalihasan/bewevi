@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import App from './container/App';
-import OnePlantContainer from './container/OnePlantContainer';
+import OnePokemonContainer from './container/OnePokemonContainer';
 import store from './redux/store';
 import './stylesheet/index.scss';
 
@@ -14,7 +14,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={App} />
-          <Route exact path="/one-plant" component={OnePlantContainer} />
+          <Route exact path="/one-pokemon" component={OnePokemonContainer} />
         </Switch>
       </BrowserRouter>
     </Provider>

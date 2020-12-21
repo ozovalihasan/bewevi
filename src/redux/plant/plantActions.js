@@ -50,7 +50,7 @@ export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
     });
 };
 
-const REACT_APP_SERVER_URL = 'https://cors-anywhere.herokuapp.com/https://treafle.io';
+const REACT_APP_SERVER_URL = 'https://cors-anywhere.herokuapp.com/https://trefle.io';
 
 export const fetchPlantsList = () => dispatch => {
   const urlAPI = `${REACT_APP_SERVER_URL}/api/v1/species?token=${process.env.REACT_APP_API_KEY}`;

@@ -5,6 +5,7 @@ import { fetchPokemonsList } from '../redux';
 import ErrorContainer from './ErrorContainer';
 import PagesBarContainer from './PagesBarContainer';
 import PokemonsListContainer from './PokemonsListContainer';
+import Logo from '../component/Logo';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="App">
+      <Logo />
       {loading && <Loading />}
       {error && <ErrorContainer />}
       <PokemonsListContainer />

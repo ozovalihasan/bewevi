@@ -7,6 +7,8 @@ import {
   POKEMON_FAILURE,
   ADD_ALL_POKEMONS,
   UPDATE_SELECTED_POKEMON,
+  UPDATE_SPECIES_SELECTED_POKEMON,
+  UPDATE_EVOLUTION_SELECTED_POKEMON,
 } from './pokemonTypes';
 
 import {
@@ -14,6 +16,8 @@ import {
   pokemonFailure,
   addAllPokemons,
   updateSelectedPokemon,
+  updateSpeciesSelectedPokemon,
+  updateEvolutionSelectedPokemon,
   axiosBlock,
   fetchPokemonsList,
   openPokemonPage,
@@ -40,30 +44,65 @@ jest.mock('axios');
 
 describe('Pokemon actions', () => {
   describe('pokemonRequest', () => {
-    it('should return default state', () => {
+    it('should return POKEMON_REQUEST type', () => {
       const action = pokemonRequest();
       expect(action).toEqual({ type: POKEMON_REQUEST });
     });
   });
 
   describe('pokemonFailure', () => {
-    it('should return default state', () => {
+    it('should return POKEMON_FAILURE type with payload', () => {
       const action = pokemonFailure('There is an error');
       expect(action).toEqual({ type: POKEMON_FAILURE, payload: 'There is an error' });
     });
   });
 
   describe('addAllPokemons', () => {
-    it('should return default state', () => {
+    it('should return ADD_ALL_POKEMONS type with payload', () => {
       const action = addAllPokemons('Pokemons');
       expect(action).toEqual({ type: ADD_ALL_POKEMONS, payload: 'Pokemons' });
     });
   });
 
   describe('updateSelectedPokemon', () => {
-    it('should return default state', () => {
+    it('should return UPDATE_SELECTED_POKEMON type with payload', () => {
       const action = updateSelectedPokemon('pokemon');
       expect(action).toEqual({ type: UPDATE_SELECTED_POKEMON, payload: 'pokemon' });
+    });
+  });
+
+  describe('updateSpeciesSelectedPokemon', () => {
+    it('should return UPDATE_SPECIES_SELECTED_POKEMON type with payload', () => {
+      const action = updateSpeciesSelectedPokemon('pokemon');
+      expect(action).toEqual({ type: UPDATE_SPECIES_SELECTED_POKEMON, payload: 'pokemon' });
+    });
+  });
+
+  describe('updateEvolutionSelectedPokemon', () => {
+    it('should return UPDATE_EVOLUTION_SELECTED_POKEMON type with payload', () => {
+      const action = updateEvolutionSelectedPokemon({
+        chain: {
+          evolves_to: [
+            {
+              evolves_to: [
+                {
+                  species: {
+                    url: 'https://pokeapi.co/api/v2/pokemon-species/12/',
+                  },
+                },
+              ],
+              species: {
+                url: 'https://pokeapi.co/api/v2/pokemon-species/11/',
+              },
+            },
+          ],
+          species: {
+            url: 'https://pokeapi.co/api/v2/pokemon-species/10/',
+          },
+        },
+        id: 4,
+      });
+      expect(action).toEqual({ type: UPDATE_EVOLUTION_SELECTED_POKEMON, payload: ['10', '11', '12'] });
     });
   });
 
@@ -154,8 +193,7 @@ describe('Pokemon actions', () => {
         status: 200,
       }));
       const species = { evolution_chain: { url: 'https://pokeapi.co/api/v2/evolution-chain/4/' } };
-      const a = await store.dispatch(fetchEvolutionPokemon(species));
-      console.warn(a);
+      await store.dispatch(fetchEvolutionPokemon(species));
       expect(store.getActions()).toEqual([{
         payload: {
           evolution_chain:

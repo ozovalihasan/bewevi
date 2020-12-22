@@ -5,6 +5,7 @@ const PokemonShort = ({
   pokemon, handleError,
 }) => (
   <Link to={`/one-pokemon/${pokemon.id}`} className="pokemon-short main">
+
     <div className="pokemon-short description">
       <div>
         {pokemon.name || 'No Name'}
@@ -14,6 +15,7 @@ const PokemonShort = ({
     <div className="pokemon-short image-container">
       <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} className="pokemon-short pokemon-image" alt="pokemon" onError={handleError} />
     </div>
+
   </Link>
 );
 

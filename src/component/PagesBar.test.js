@@ -6,27 +6,24 @@ import userEvent from '@testing-library/user-event';
 import PagesBar from './PagesBar';
 
 const pages = [
-
   ['https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', 'Previous'],
   ['https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20', '2'],
   ['https://pokeapi.co/api/v2/pokemon/?offset=40&limit=20', 'Next'],
 ];
 const selfPage = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20';
-let handleClick;
+const handleClick = jest.fn();
 
-beforeEach(() => {
-  handleClick = jest.fn();
-});
+const renderReadyComponent = (
+  <PagesBar
+    pages={pages}
+    handleClick={handleClick}
+    selfPage={selfPage}
+  />
+);
 
 describe('<PagesBar />', () => {
   it('contains expected texts', () => {
-    render(
-      <PagesBar
-        pages={pages}
-        handleClick={handleClick}
-        selfPage={selfPage}
-      />,
-    );
+    render(renderReadyComponent);
 
     expect(screen.getByText(/Previous/i)).toBeInTheDocument();
     expect(screen.getByText(/2/i)).toBeInTheDocument();
@@ -34,13 +31,7 @@ describe('<PagesBar />', () => {
   });
 
   it('is triggering handleClick correctly', () => {
-    render(
-      <PagesBar
-        pages={pages}
-        handleClick={handleClick}
-        selfPage={selfPage}
-      />,
-    );
+    render(renderReadyComponent);
 
     userEvent.click(screen.getByText(/Previous/i));
     expect(handleClick.mock.calls.length).toBe(1);
@@ -56,13 +47,7 @@ describe('<PagesBar />', () => {
   });
 
   it('renders correctly', () => {
-    const tree = renderer.create(
-      <PagesBar
-        pages={pages}
-        handleClick={handleClick}
-        selfPage={selfPage}
-      />,
-    ).toJSON();
+    const tree = renderer.create(renderReadyComponent).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

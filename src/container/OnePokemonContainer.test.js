@@ -45,7 +45,7 @@ describe('<PokemonsListContainer />', () => {
     expect(screen.getByText(/["1","2","3"]/i)).toBeInTheDocument();
   });
 
-  it('is updating if there is an error when images are being installed', () => {
+  it('is triggering handleError and updating src of images if there is an error when images are being installed', () => {
     initStore.pokemon.loading = false;
     render(
       <Provider store={store}>
@@ -80,7 +80,6 @@ describe('<PokemonsListContainer />', () => {
   });
 
   it('dispatch fetchSelectedPokemon if ids of the stored pokemon and selected pokemon are different ', () => {
-    initStore.pokemon.loading = false;
     render(
       <Provider store={store}>
         <OnePokemonContainer match={{ params: { id: '2' } }} />

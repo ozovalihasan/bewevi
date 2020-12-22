@@ -53,8 +53,7 @@ describe('<OnePokemon />', () => {
     );
 
     const imgs = ReactTestUtils.scryRenderedDOMComponentsWithTag(rendered, 'img');
-    // console.warn(imgs.length);
-    imgs.map(img => { ReactTestUtils.Simulate.error(img); });
+    imgs.map(img => ReactTestUtils.Simulate.error(img));
     expect(handleError.mock.calls.length).toBe(4);
   });
 

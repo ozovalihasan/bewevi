@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import Loading from '../component/Loading';
 import { fetchPokemonsList } from '../redux';
 import ErrorContainer from './ErrorContainer';
-import PagesBarContainer from './PagesBarContainer';
 import PokemonsListContainer from './PokemonsListContainer';
 import Logo from '../component/Logo';
+import OnePokemonContainer from './OnePokemonContainer';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,8 +28,10 @@ function App() {
       <Logo />
       {loading && <Loading />}
       {error && <ErrorContainer />}
-      <PokemonsListContainer />
-      <PagesBarContainer />
+      <Switch>
+        <Route exact path="/" component={PokemonsListContainer} />
+        <Route exact path="/one-pokemon/:id" component={OnePokemonContainer} />
+      </Switch>
     </div>
   );
 }

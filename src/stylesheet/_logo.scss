@@ -3,27 +3,21 @@
     display: flex;
     color: $fourth-color;
     flex-shrink: 0;
+    margin: 20px;
   }
 
   &.image {
     align-self: center;
     height: 50px;
+    border-radius: 10px;
 
     @media (min-width: 768px) {
       height: 100px;
     }
   }
 
-  &.title {
-    height: auto;
+  &.text {
     align-self: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    margin-left: -15px;
-
-    @media (min-width: 768px) {
-      font-size: 40px;
-      margin-left: -30px;
-    }
+    font-size: 30px;
   }
 }

@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Logo from './Logo';
 
 const OnePokemon = ({
   pokemon, handleError, color, habitat, shape, evolutionChain,
 }) => (
   <div className="one-pokemon main">
-    <div className="one-pokemon logo">
-      <Logo />
-    </div>
+
     <div className="one-pokemon top-part">
 
       <div className="one-pokemon main-image">

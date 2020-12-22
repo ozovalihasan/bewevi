@@ -5,26 +5,6 @@ exports[`<OnePokemon /> renders correctly 1`] = `
   className="one-pokemon main"
 >
   <div
-    className="one-pokemon logo"
-  >
-    <a
-      className="logo main"
-      href="/"
-      onClick={[Function]}
-    >
-      <img
-        alt="logo"
-        className="logo image"
-        src="emptyImage.svg"
-      />
-      <div
-        className="logo title"
-      >
-        vy
-      </div>
-    </a>
-  </div>
-  <div
     className="one-pokemon top-part"
   >
     <div

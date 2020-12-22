@@ -40,7 +40,7 @@ describe('<FilterContainer />', () => {
     expect(screen.getByText(/Next/i)).toBeInTheDocument();
   });
 
-  it('is triggering handleClick when the button is clicked', () => {
+  it('is triggering handleClick when any button is clicked', () => {
     render(
       renderReadyComponent,
     );

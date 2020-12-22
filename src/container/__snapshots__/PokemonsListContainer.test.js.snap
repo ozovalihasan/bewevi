@@ -51,6 +51,9 @@ Object {
           </div>
         </a>
       </div>
+      <div>
+        Mock Pages Bar Container 
+      </div>
     </div>
   </body>,
   "container": <div>
@@ -99,6 +102,9 @@ Object {
           />
         </div>
       </a>
+    </div>
+    <div>
+      Mock Pages Bar Container 
     </div>
   </div>,
   "debug": [Function],

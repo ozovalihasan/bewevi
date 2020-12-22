@@ -5,9 +5,8 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import '@testing-library/jest-dom';
 import {
-  BrowserRouter, Redirect, Route, Switch,
+  BrowserRouter,
 } from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
 
 import PokemonShortContainer from './PokemonShortContainer';
 
@@ -35,6 +34,11 @@ beforeEach(() => {
 });
 
 describe('<PokemonShortContainer />', () => {
+  it('connects to store and imports values', () => {
+    render(renderReadyComponent);
+    expect(screen.getByText(/raichu/i)).toBeInTheDocument();
+  });
+
   it('is triggering handleError if there is an error related to img tag', () => {
     render(renderReadyComponent);
     ReactTestUtils.Simulate.error(screen.getByAltText('test'));

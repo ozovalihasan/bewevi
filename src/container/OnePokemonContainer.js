@@ -8,11 +8,11 @@ import { fetchSelectedPokemon } from '../redux';
 
 const OnePokemonContainer = ({ match }) => {
   const dispatch = useDispatch();
-  const loading = useSelector(state => state.pokemon.loading);
   const storedPokemon = useSelector(state => state.pokemon.chosen);
   const selectedPokemon = match.params.id;
-  const evolutionChain = useSelector(state => state.pokemon.evolutionChain);
-  const { color, habitat, shape } = useSelector(state => state.pokemon);
+  const {
+    color, habitat, shape, evolutionChain, loading,
+  } = useSelector(state => state.pokemon);
 
   const handleError = e => {
     e.target.src = emptyImageSVG;

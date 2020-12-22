@@ -12,9 +12,9 @@ exports[`<Logo /> renders correctly 1`] = `
     src="emptyImage.svg"
   />
   <div
-    className="logo title"
+    className="logo text"
   >
-    vy
+    Bewevi
   </div>
 </a>
 `;

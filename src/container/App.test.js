@@ -4,6 +4,9 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import '@testing-library/jest-dom';
 
+import {
+  BrowserRouter, Redirect,
+} from 'react-router-dom';
 import App from './App';
 
 const initStore = { pokemon: {} };
@@ -29,10 +32,10 @@ jest.mock('./PokemonsListContainer', () => {
   PokemonsListContainer.displayName = 'PokemonsListContainer';
   return PokemonsListContainer;
 });
-jest.mock('./PagesBarContainer', () => {
-  const PagesBarContainer = () => (<div>Mock Pages Bar Container </div>);
-  PagesBarContainer.displayName = 'PagesBarContainer';
-  return PagesBarContainer;
+jest.mock('./OnePokemonContainer', () => {
+  const OnePokemonContainer = () => (<div>Mock One Pokemon Container </div>);
+  OnePokemonContainer.displayName = 'OnePokemonContainer';
+  return OnePokemonContainer;
 });
 
 let renderReadyComponent;
@@ -41,7 +44,9 @@ beforeEach(() => {
   initStoreReset();
   renderReadyComponent = (
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   );
 });
@@ -56,6 +61,7 @@ describe('<App />', () => {
       render(
         renderReadyComponent,
       );
+
       expect(store.dispatch.mock.calls.length).toEqual(1);
 
       expect(screen.queryByText(/Mock Loading/i)).not.toBeInTheDocument();
@@ -73,7 +79,7 @@ describe('<App />', () => {
   });
 
   describe('If the app is initialized', () => {
-    it('is rendering all components except Loading if the app isn\'t being loaded ', () => {
+    it('is rendering PokemonsListContainer if the app isn\'t being loaded ', () => {
       initStore.pokemon.initialized = true;
       render(
         renderReadyComponent,
@@ -81,7 +87,6 @@ describe('<App />', () => {
 
       expect(screen.queryByText(/Mock Loading/i)).not.toBeInTheDocument();
       expect(screen.queryByText(/Mock Pokemons List Container/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Mock Pages Bar Container/i)).toBeInTheDocument();
     });
 
     it('is rendering Loading if the app is being loaded', () => {
@@ -92,7 +97,30 @@ describe('<App />', () => {
       );
       expect(screen.queryByText(/Mock Loading/i)).toBeInTheDocument();
       expect(screen.queryByText(/Mock Pokemons List Container/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Mock Pages Bar Container/i)).toBeInTheDocument();
+    });
+
+    it('is rendering Error if any error is stored', () => {
+      initStore.pokemon.error = 'There is an error';
+      initStore.pokemon.initialized = true;
+      render(
+        renderReadyComponent,
+      );
+      expect(screen.getByText(/Mock Error Container/i)).toBeInTheDocument();
+    });
+
+    it('is rendering OnePokemonContainer if the app is redirected to \'/one-pokemon/:id\'', () => {
+      initStore.pokemon.initialized = true;
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Redirect to="/one-pokemon/2" />
+            <App />
+          </BrowserRouter>
+        </Provider>,
+
+      );
+      expect(screen.queryByText(/Mock Pokemons List Container/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/Mock One Pokemon Container/i)).toBeInTheDocument();
     });
   });
 

@@ -6,11 +6,9 @@ const ErrorContainer = () => {
   const error = useSelector(state => state.pokemon.error.message);
 
   return (
-    <>
-      <Error
-        error={error}
-      />
-    </>
+    <Error
+      error={error}
+    />
   );
 };
 export default ErrorContainer;

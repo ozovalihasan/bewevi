@@ -9,13 +9,11 @@ a {
   text-decoration: none;
 }
 
-@import 'filter',
+@import
+  'error',
   'loading',
   'logo',
-  'error',
   'one-pokemon',
-  'pokemon-short',
-  'pokemons-list',
-  'toggle-filter-search',
   'pages-bar',
-  'search';
+  'pokemon-short',
+  'pokemons-list';

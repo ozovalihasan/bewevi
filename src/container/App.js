@@ -5,7 +5,6 @@ import { fetchPokemonsList } from '../redux';
 import ErrorContainer from './ErrorContainer';
 import PagesBarContainer from './PagesBarContainer';
 import PokemonsListContainer from './PokemonsListContainer';
-// import ToggleFilterSearchContainer from './ToggleFilterSearchContainer';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +24,6 @@ function App() {
   return (
     <div className="App">
       {loading && <Loading />}
-      {/* <ToggleFilterSearchContainer /> */}
       {error && <ErrorContainer />}
       <PokemonsListContainer />
       <PagesBarContainer />

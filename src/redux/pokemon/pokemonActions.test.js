@@ -1,5 +1,4 @@
 import configureMockStore from 'redux-mock-store';
-// import { applyMiddleware } from 'redux';
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
@@ -150,7 +149,6 @@ describe('Pokemon actions', () => {
     it('should dispatch addAllPokemons when response is successful', async () => {
       axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons', status: 200 }));
       await store.dispatch(fetchPokemonsUpdate({ filter: 'name', filterInput: 'Ivy' }));
-      // console.warn(store.getActions());
       expect(store.getActions()).toEqual([
         {
           type: 'UPDATE_FILTER',

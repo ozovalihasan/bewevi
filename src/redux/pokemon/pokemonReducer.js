@@ -2,9 +2,9 @@ import {
   POKEMON_REQUEST,
   POKEMON_FAILURE,
   ADD_ALL_POKEMONS,
-  // UPDATE_FILTER,
-  // UPDATE_SEARCH,
   UPDATE_SELECTED_POKEMON,
+  UPDATE_SPECIES_SELECTED_POKEMON,
+  UPDATE_EVOLUTION_SELECTED_POKEMON,
 } from './pokemonTypes';
 
 const reducer = (state = {}, action) => {
@@ -36,26 +36,27 @@ const reducer = (state = {}, action) => {
         error: '',
       };
 
-      // case UPDATE_FILTER:
-      //   return {
-      //     ...state,
-      //     filter: action.payload.filter,
-      //     filterInput: action.payload.filterInput,
-      //     error: '',
-      //   };
-
-      // case UPDATE_SEARCH:
-      //   return {
-      //     ...state,
-      //     search: action.payload,
-      //     error: '',
-      //   };
-
     case UPDATE_SELECTED_POKEMON:
       return {
         ...state,
-        loading: false,
         chosen: action.payload,
+        error: '',
+      };
+
+    case UPDATE_SPECIES_SELECTED_POKEMON:
+      return {
+        ...state,
+        color: action.payload.color.name,
+        habitat: action.payload.habitat.name,
+        shape: action.payload.shape.name,
+        error: '',
+      };
+
+    case UPDATE_EVOLUTION_SELECTED_POKEMON:
+      return {
+        ...state,
+        loading: false,
+        evolutionChain: action.payload,
         error: '',
       };
 

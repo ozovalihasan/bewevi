@@ -1,4 +1,12 @@
 .one-pokemon {
+  $colors:black, blue, brown, gray, green, pink, purple, red, white,yellow;
+
+  @each $color in $colors {
+    .#{$color} {
+      background-color: $color;
+    }
+  }
+
   &.main {
     font-family: 'Courier New', Courier, monospace;
     margin-top: 20px;
@@ -22,7 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px 5% 0 5%;
+    padding: 20px 5% 20px 5%;
   }
 
   &.top-images {
@@ -54,21 +62,13 @@
   }
 
   &.bottom-part {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    padding: 5%;
-
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr 1fr 1fr;
-      padding: 20px;
-    }
+    padding: 30px 5% 0;
   }
 
-  &.one-property {
+  &.one-chain {
     background-color: $third-color;
     padding: 20px 10px 10px;
-    margin: 10px;
+    margin: 10px 10px;
     font-size: 20px;
     border-radius: 5px;
     display: flex;
@@ -76,9 +76,14 @@
   }
 
   &.bottom-images {
-    margin-top: 20px;
-    // height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
     width: 100%;
     border-radius: 10px;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
   }
 }

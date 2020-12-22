@@ -14,7 +14,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={App} />
-          <Route exact path="/one-pokemon" component={OnePokemonContainer} />
+          <Route exact path="/one-pokemon/:id" component={OnePokemonContainer} />
         </Switch>
       </BrowserRouter>
     </Provider>

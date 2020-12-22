@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Logo from './Logo';
-// import EmptyImage from './EmptyImage';
 
 const OnePokemon = ({
-  pokemon, handleError,
+  pokemon, handleError, color, habitat, shape, evolutionChain,
 }) => (
   <div className="one-pokemon main">
     <div className="one-pokemon logo">
@@ -16,18 +16,28 @@ const OnePokemon = ({
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
           alt="pokemon"
           onError={handleError}
-          className="one-pokemon top-images"
+          className={`one-pokemon top-images ${color}`}
         />
       </div>
       <div className="one-pokemon top-description">
-        <div>
+        <div className="one-pokemon description-part">
           Name:
           {' '}
           {pokemon.name}
         </div>
+        <div className="one-pokemon description-part">
+          Habitat:
+          {' '}
+          {habitat}
+        </div>
+        <div className="one-pokemon description-part">
+          Shape:
+          {' '}
+          {shape}
+        </div>
 
         {pokemon.weight && (
-          <div>
+          <div className="one-pokemon description-part">
             Weight:
             {' '}
             {pokemon.height * 0.1}
@@ -36,7 +46,7 @@ const OnePokemon = ({
         )}
 
         {pokemon.height && (
-          <div>
+          <div className="one-pokemon description-part">
             Height:
             {' '}
             {pokemon.height * 10}
@@ -46,27 +56,17 @@ const OnePokemon = ({
       </div>
     </div>
     <div className="one-pokemon bottom-part">
-      <div className="one-pokemon one-property">
-        <div>
-          Fruit
-        </div>
-
-      </div>
-
-      <div className="one-pokemon one-property">
-        <div>
-          Leaf
-        </div>
-
-      </div>
-      <div className="one-pokemon one-property">
-        <div>
-          Flower
-        </div>
-
+      Evolution Chain
+      <div className="one-pokemon bottom-images">
+        {evolutionChain.map(pokemonId => (
+          <div key={pokemonId} className="one-pokemon one-chain ">
+            <Link to={`/one-pokemon/${pokemonId}`} className="one-pokemon main">
+              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`} alt="Pokemon in evolution chain of the selected pokemon" className="one-pokemon bottom-images" />
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
-
   </div>
 
 );
@@ -74,6 +74,10 @@ const OnePokemon = ({
 OnePokemon.propTypes = {
   pokemon: PropTypes.shape().isRequired,
   handleError: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  habitat: PropTypes.string.isRequired,
+  shape: PropTypes.string.isRequired,
+  evolutionChain: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default OnePokemon;

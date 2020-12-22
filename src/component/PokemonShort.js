@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PokemonShort = ({
-  pokemon, handleClick, handleError,
+  pokemon, handleError,
 }) => (
-  <Link to="/one-pokemon" onClick={() => handleClick(pokemon.id)} className="pokemon-short main">
+  <Link to={`/one-pokemon/${pokemon.id}`} className="pokemon-short main">
     <div className="pokemon-short description">
       <div>
         {pokemon.name || 'No Name'}
@@ -22,9 +22,7 @@ PokemonShort.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  handleClick: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,
-
 };
 
 export default PokemonShort;

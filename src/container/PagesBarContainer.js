@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import PagesBar from '../component/PagesBar';
 
-// import Pages from '../component/Pages';
 import { openPokemonPage } from '../redux';
 
 const PagesBarContainer = () => {
@@ -37,19 +36,9 @@ const PagesBarContainer = () => {
     pages.push([links.next, 'next']);
   }
 
-  // const limit = parseInt(links.next.split(/limit=/)[1].split(/&/)[0], 10);
-  // const next = parseInt(links.last.split(/offset=/)[1].split(/&/)[0], 10);
-  // const selfPage = parseInt(links.self.split(/page=/)[1]?.split(/&/)[0], 10) || 1;
-  // const firstPage = parseInt(links.first.split(/page=/)[1].split(/&/)[0], 10);
-
-  // const dividePath = links.last.split(/page=\d*/);
   const handleClick = pageUrl => {
     if (pageUrl !== selfPage) dispatch(openPokemonPage(pageUrl));
   };
-
-  // if (links.previous) pages.push([selfPage - 1, 'Previous']);
-  // pages.push([selfPage, selfPage]);
-  // if (links.next) pages.push([selfPage + 1, 'Next']);
 
   return (
     <PagesBar pages={pages} handleClick={handleClick} selfPage={selfPage} />

@@ -20,7 +20,7 @@ const PokemonShort = ({
 PokemonShort.propTypes = {
   pokemon: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
   handleError: PropTypes.func.isRequired,
 };

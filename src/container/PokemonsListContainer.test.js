@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import PokemonsListContainer from './PokemonsListContainer';
 
 jest.mock('react-redux', () => ({
-  useDispatch: jest.fn(),
   useSelector: jest.fn(),
 }));
 
@@ -14,9 +13,11 @@ beforeEach(() => {
     {
       pokemon: {
         pokemons: [{
-          id: 1, common_name: 'Ivy common', scientific_name: 'Ivy scientific', image_url: 'Ivy.jpg',
+          name: 'spearow',
+          url: 'https://pokeapi.co/api/v2/pokemon/21/',
         }, {
-          id: 2, common_name: 'Ivy common2', scientific_name: 'Ivy scientific2', image_url: 'Ivy2.jpg',
+          name: 'fearow',
+          url: 'https://pokeapi.co/api/v2/pokemon/22/',
         }],
       },
     },
@@ -30,7 +31,8 @@ describe('<PokemonsListContainer />', () => {
         <PokemonsListContainer />
       </BrowserRouter>,
     );
-    expect(screen.getAllByText(/Ivy scientific/i).length).toEqual(2);
+    expect(screen.getAllByText(/spearow/i).length).toEqual(1);
+    expect(screen.getAllByText(/fearow/i).length).toEqual(1);
   });
 
   it('renders correctly', () => {

@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 const PokemonShort = ({
   pokemon,
-  handleClick,
   handleError,
 }) => (
   <>
     {JSON.stringify(pokemon)}
     <img src="#" alt="test" onError={handleError} />
-    <Link to="/one-pokemon" onClick={() => handleClick(pokemon.id)}>
+    <Link to={`/one-pokemon/${pokemon.id}`}>
       test
     </Link>
 
@@ -19,7 +18,6 @@ const PokemonShort = ({
 PokemonShort.propTypes = {
   pokemon: PropTypes.shape().isRequired,
   handleError: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
 };
 
 export default PokemonShort;

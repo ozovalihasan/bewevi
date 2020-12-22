@@ -12,46 +12,40 @@ const OnePokemonContainer = ({ match }) => {
   const storedPokemon = useSelector(state => state.pokemon.chosen);
   const selectedPokemon = match.params.id;
   const evolutionChain = useSelector(state => state.pokemon.evolutionChain);
-  const color = useSelector(state => state.pokemon.color);
-  const habitat = useSelector(state => state.pokemon.habitat);
-  const shape = useSelector(state => state.pokemon.shape);
+  const { color, habitat, shape } = useSelector(state => state.pokemon);
+
+  const handleError = e => {
+    e.target.src = emptyImageSVG;
+  };
+
   if (loading === false) {
     if (storedPokemon.id) {
       storedPokemon.id = storedPokemon.id.toString();
-    } else {
-      dispatch(fetchSelectedPokemon(selectedPokemon));
-    }
-    if (storedPokemon.id !== selectedPokemon) {
-      dispatch(fetchSelectedPokemon(selectedPokemon));
-    } else {
-      const handleError = e => {
-        e.target.src = emptyImageSVG;
-      };
-
-      if (loading) {
+      if (storedPokemon.id !== selectedPokemon) {
+        dispatch(fetchSelectedPokemon(selectedPokemon));
+      } else {
         return (
-          <Loading />
+          <>
+            {storedPokemon.id ? (
+              <OnePokemon
+                pokemon={storedPokemon}
+                handleError={handleError}
+                color={color}
+                habitat={habitat}
+                shape={shape}
+                evolutionChain={evolutionChain}
+              />
+            ) : (
+              <div />
+            )}
+          </>
         );
       }
-      return (
-        <>
-          {storedPokemon.id ? (
-            <OnePokemon
-              pokemon={storedPokemon}
-              handleError={handleError}
-              color={color}
-              habitat={habitat}
-              shape={shape}
-              evolutionChain={evolutionChain}
-            />
-          ) : (
-            <div />
-          )}
-        </>
-      );
+    } else {
+      dispatch(fetchSelectedPokemon(selectedPokemon));
     }
   }
-  return (<div />);
+  return (<Loading />);
 };
 
 OnePokemonContainer.propTypes = {

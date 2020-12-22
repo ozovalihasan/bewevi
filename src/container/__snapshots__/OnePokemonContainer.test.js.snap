@@ -5,7 +5,11 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      {"common_name":"Ivy common","scientific_name":"Ivy scientific","image_url":"Ivy.jpg","images":{"fruit":[{}],"leaf":["image.jpg"],"flower":["image.jpg"]}}
+      {"id":"3"}
+      green
+      grassland
+      quadruped
+      ["1","2","3"]
       <img
         alt="test"
         src="#"
@@ -13,7 +17,11 @@ Object {
     </div>
   </body>,
   "container": <div>
-    {"common_name":"Ivy common","scientific_name":"Ivy scientific","image_url":"Ivy.jpg","images":{"fruit":[{}],"leaf":["image.jpg"],"flower":["image.jpg"]}}
+    {"id":"3"}
+    green
+    grassland
+    quadruped
+    ["1","2","3"]
     <img
       alt="test"
       src="#"

@@ -6,8 +6,6 @@ import {
   POKEMON_REQUEST,
   POKEMON_FAILURE,
   ADD_ALL_POKEMONS,
-  UPDATE_FILTER,
-  UPDATE_SEARCH,
   UPDATE_SELECTED_POKEMON,
 } from './pokemonTypes';
 
@@ -15,14 +13,12 @@ import {
   pokemonRequest,
   pokemonFailure,
   addAllPokemons,
-  updateFilter,
-  updateSearch,
   updateSelectedPokemon,
   axiosBlock,
   fetchPokemonsList,
-  fetchPokemonsUpdate,
-  fetchPokemonsSearch,
   openPokemonPage,
+  fetchEvolutionPokemon,
+  fetchSpeciesPokemon,
   fetchSelectedPokemon,
 } from './pokemonActions';
 
@@ -64,23 +60,9 @@ describe('Pokemon actions', () => {
     });
   });
 
-  describe('updateFilter', () => {
-    it('should return default state', () => {
-      const action = updateFilter({ filter: 'name', filterInput: 'ivy' });
-      expect(action).toEqual({ type: UPDATE_FILTER, payload: { filter: 'name', filterInput: 'ivy' } });
-    });
-  });
-
-  describe('updateSearch', () => {
-    it('should return default state', () => {
-      const action = updateSearch({ searchInput: 'ivy' });
-      expect(action).toEqual({ type: UPDATE_SEARCH, payload: 'ivy' });
-    });
-  });
-
   describe('updateSelectedPokemon', () => {
     it('should return default state', () => {
-      const action = updateSelectedPokemon({ data: 'pokemon' });
+      const action = updateSelectedPokemon('pokemon');
       expect(action).toEqual({ type: UPDATE_SELECTED_POKEMON, payload: 'pokemon' });
     });
   });
@@ -133,54 +115,6 @@ describe('Pokemon actions', () => {
     });
   });
 
-  describe('fetchPokemonsUpdate', () => {
-    it('should dispatch updateFilter action ', () => {
-      axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons' }));
-      store.dispatch(fetchPokemonsUpdate({ filter: 'name', filterInput: 'Ivy' }));
-      expect(store.getActions()).toEqual([
-        {
-          type: 'UPDATE_FILTER',
-          payload: { filter: 'name', filterInput: 'Ivy' },
-        },
-        { type: 'POKEMON_REQUEST' },
-      ]);
-    });
-
-    it('should dispatch addAllPokemons when response is successful', async () => {
-      axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons', status: 200 }));
-      await store.dispatch(fetchPokemonsUpdate({ filter: 'name', filterInput: 'Ivy' }));
-      expect(store.getActions()).toEqual([
-        {
-          type: 'UPDATE_FILTER',
-          payload: { filter: 'name', filterInput: 'Ivy' },
-        },
-        { type: 'POKEMON_REQUEST' },
-        { type: 'ADD_ALL_POKEMONS', payload: 'Pokemons' },
-
-      ]);
-    });
-  });
-  describe('fetchPokemonsSearch', () => {
-    it('should dispatch updateFilter action ', () => {
-      axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons' }));
-      store.dispatch(fetchPokemonsSearch({ searchInput: 'Ivy' }));
-      expect(store.getActions()).toEqual([
-        { type: 'UPDATE_SEARCH', payload: 'Ivy' },
-        { type: 'POKEMON_REQUEST' },
-      ]);
-    });
-
-    it('should dispatch addAllPokemons when response is successful', async () => {
-      axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons', status: 200 }));
-      await store.dispatch(fetchPokemonsSearch({ searchInput: 'Ivy' }));
-      expect(store.getActions()).toEqual([
-        { type: 'UPDATE_SEARCH', payload: 'Ivy' },
-        { type: 'POKEMON_REQUEST' },
-        { type: 'ADD_ALL_POKEMONS', payload: 'Pokemons' },
-      ]);
-    });
-  });
-
   describe('openPokemonPage', () => {
     it('should dispatch addAllPokemons when response is successful', async () => {
       axios.mockImplementationOnce(() => Promise.resolve({ data: 'Pokemons', status: 200 }));
@@ -192,13 +126,92 @@ describe('Pokemon actions', () => {
     });
   });
 
+  describe('fetchEvolutionPokemon', () => {
+    it('should dispatch updateEvolutionSelectedPokemon when response is successful', async () => {
+      axios.mockImplementationOnce(() => Promise.resolve({
+        data: {
+          chain: {
+            evolves_to: [
+              {
+                evolves_to: [
+                  {
+                    species: {
+                      url: 'https://pokeapi.co/api/v2/pokemon-species/12/',
+                    },
+                  },
+                ],
+                species: {
+                  url: 'https://pokeapi.co/api/v2/pokemon-species/11/',
+                },
+              },
+            ],
+            species: {
+              url: 'https://pokeapi.co/api/v2/pokemon-species/10/',
+            },
+          },
+          id: 4,
+        },
+        status: 200,
+      }));
+      const species = { evolution_chain: { url: 'https://pokeapi.co/api/v2/evolution-chain/4/' } };
+      const a = await store.dispatch(fetchEvolutionPokemon(species));
+      console.warn(a);
+      expect(store.getActions()).toEqual([{
+        payload: {
+          evolution_chain:
+            {
+              url: 'https://pokeapi.co/api/v2/evolution-chain/4/',
+            },
+        },
+        type: 'UPDATE_SPECIES_SELECTED_POKEMON',
+      },
+      {
+        type: 'POKEMON_REQUEST',
+      },
+      {
+        payload: ['10', '11', '12'],
+        type: 'UPDATE_EVOLUTION_SELECTED_POKEMON',
+      }]);
+    });
+  });
+  describe('fetchSpeciesPokemon', () => {
+    it('should dispatch updateSpeciesSelectedPokemon when response is successful', async () => {
+      axios.mockImplementationOnce(() => Promise.resolve({ data: { id: '1' }, status: 200 }));
+      await store.dispatch(fetchSpeciesPokemon('100'));
+      expect(store.getActions()).toEqual([
+        {
+          payload: '100',
+          type: 'UPDATE_SELECTED_POKEMON',
+        },
+        {
+          type: 'POKEMON_REQUEST',
+        },
+        {
+          payload: {
+            id: '1',
+          },
+          type: 'UPDATE_SPECIES_SELECTED_POKEMON',
+        },
+      ]);
+    });
+  });
+
   describe('fetchSelectedPokemon', () => {
     it('should dispatch updateSelectedPokemon when response is successful', async () => {
-      axios.mockImplementationOnce(() => Promise.resolve({ data: { data: 'Pokemons' }, status: 200 }));
-      await store.dispatch(fetchSelectedPokemon(1993));
+      axios.mockImplementationOnce(() => Promise.resolve({ data: { id: '1' }, status: 200 }));
+      await store.dispatch(fetchSelectedPokemon('100'));
       expect(store.getActions()).toEqual([
         { type: 'POKEMON_REQUEST' },
-        { type: 'UPDATE_SELECTED_POKEMON', payload: 'Pokemons' },
+        {
+          payload: {
+            id: '1',
+          },
+          type: 'UPDATE_SELECTED_POKEMON',
+        },
+        {
+          type: 'POKEMON_REQUEST',
+        },
+
       ]);
     });
   });

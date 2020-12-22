@@ -6,19 +6,16 @@ import userEvent from '@testing-library/user-event';
 import PagesBar from './PagesBar';
 
 const pages = [
-  [3, 'Previous'],
-  [4, '4'],
-  [5, 'Next'],
+
+  ['https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20', 'Previous'],
+  ['https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20', '2'],
+  ['https://pokeapi.co/api/v2/pokemon/?offset=40&limit=20', 'Next'],
 ];
-const selfPage = 4;
+const selfPage = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20';
 let handleClick;
 
 beforeEach(() => {
-  handleClick = jest.fn(x => x + 2);
-});
-
-afterEach(() => {
-  handleClick.mockClear();
+  handleClick = jest.fn();
 });
 
 describe('<PagesBar />', () => {
@@ -30,10 +27,9 @@ describe('<PagesBar />', () => {
         selfPage={selfPage}
       />,
     );
-    handleClick('hasan3');
 
     expect(screen.getByText(/Previous/i)).toBeInTheDocument();
-    expect(screen.getByText(/4/i)).toBeInTheDocument();
+    expect(screen.getByText(/2/i)).toBeInTheDocument();
     expect(screen.getByText(/Next/i)).toBeInTheDocument();
   });
 
@@ -48,15 +44,15 @@ describe('<PagesBar />', () => {
 
     userEvent.click(screen.getByText(/Previous/i));
     expect(handleClick.mock.calls.length).toBe(1);
-    expect(handleClick.mock.calls[0][0]).toBe(3);
+    expect(handleClick.mock.calls[0][0]).toBe('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20');
 
-    userEvent.click(screen.getByText(/4/i));
+    userEvent.click(screen.getByText(/2/i));
     expect(handleClick.mock.calls.length).toBe(2);
-    expect(handleClick.mock.calls[1][0]).toBe(4);
+    expect(handleClick.mock.calls[1][0]).toBe(selfPage);
 
     userEvent.click(screen.getByText(/Next/i));
     expect(handleClick.mock.calls.length).toBe(3);
-    expect(handleClick.mock.calls[2][0]).toBe(5);
+    expect(handleClick.mock.calls[2][0]).toBe('https://pokeapi.co/api/v2/pokemon/?offset=40&limit=20');
   });
 
   it('renders correctly', () => {

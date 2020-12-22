@@ -16,10 +16,8 @@ let handleError;
 beforeEach(() => {
   handleError = jest.fn();
   pokemon = {
-    id: 1993,
-    commonName: 'foo',
-    scientificName: 'bar',
-    imageUrl: 'foobar',
+    id: '10',
+    name: 'raichu',
   };
   handleClick = jest.fn();
 });
@@ -41,30 +39,15 @@ describe('<PokemonShort />', () => {
         <Redirect to="/" />
         <Switch>
           <Route exact path="/" render={() => <>Main Page</>} />
-          <Route exact path="/one-pokemon" render={() => <div>One Pokemon Page</div>} />
+          <Route exact path={`/one-pokemon/${pokemon.id}`} render={() => <div>One Pokemon Page</div>} />
         </Switch>
       </BrowserRouter>,
     );
 
     expect(screen.getByText(/Main Page/i)).toBeInTheDocument();
-    expect(screen.getByText(/bar/i)).toBeInTheDocument();
-    userEvent.click(screen.getByText(/bar/i));
+    expect(screen.getByText(/raichu/i)).toBeInTheDocument();
+    userEvent.click(screen.getByText(/raichu/i));
     expect(screen.getByText(/One Pokemon Page/i)).toBeInTheDocument();
-  });
-  it('is triggering handleClick when the link is clicked', () => {
-    render(
-      <BrowserRouter>
-        <PokemonShort
-          pokemon={pokemon}
-          handleError={handleError}
-          handleClick={handleClick}
-        />
-      </BrowserRouter>,
-    );
-
-    userEvent.click(screen.getByText(/bar/i));
-    expect(handleClick.mock.calls.length).toBe(1);
-    expect(handleClick.mock.calls[0][0]).toBe(1993);
   });
 
   it('triggers onError when there are errors of img tags', () => {
@@ -82,8 +65,8 @@ describe('<PokemonShort />', () => {
     expect(handleError.mock.calls.length).toBe(1);
   });
 
-  it('is rendering \'no common name\' if common name of the pokemon doesn\'t exist ', () => {
-    pokemon.commonName = null;
+  it('is rendering \'No  Name\' if name of the pokemon doesn\'t exist ', () => {
+    pokemon.name = null;
     render(
       <BrowserRouter>
         <PokemonShort
@@ -93,7 +76,7 @@ describe('<PokemonShort />', () => {
         />
       </BrowserRouter>,
     );
-    expect(screen.getByText(/No common name/i)).toBeInTheDocument();
+    expect(screen.getByText(/No Name/i)).toBeInTheDocument();
   });
 
   it('renders correctly', () => {
@@ -102,7 +85,6 @@ describe('<PokemonShort />', () => {
         <PokemonShort
           pokemon={pokemon}
           handleError={handleError}
-          handleClick={handleClick}
         />
       </BrowserRouter>,
     ).toJSON();

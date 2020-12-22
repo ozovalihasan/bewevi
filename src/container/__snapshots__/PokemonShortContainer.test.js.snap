@@ -5,26 +5,26 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      {"id":1993}
+      {"id":"21","name":"raichu"}
       <img
         alt="test"
         src="#"
       />
       <a
-        href="/one-pokemon"
+        href="/one-pokemon/21"
       >
         test
       </a>
     </div>
   </body>,
   "container": <div>
-    {"id":1993}
+    {"id":"21","name":"raichu"}
     <img
       alt="test"
       src="#"
     />
     <a
-      href="/one-pokemon"
+      href="/one-pokemon/21"
     >
       test
     </a>

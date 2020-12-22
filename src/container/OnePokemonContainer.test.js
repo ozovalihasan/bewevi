@@ -1,75 +1,100 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 import ReactTestUtils from 'react-dom/test-utils';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
 import OnePokemonContainer from './OnePokemonContainer';
 
-jest.mock('react-redux', () => ({
-  useDispatch: jest.fn(),
-  useSelector: jest.fn(),
-}));
+const initStore = {};
+const initStoreReset = () => {
+  initStore.pokemon = {
+    loading: false,
+    initialized: false,
+    chosen: {
+      id: 3,
+    },
+    color: 'green',
+    habitat: 'grassland',
+    shape: 'quadruped',
+    evolutionChain: ['1', '2', '3'],
+  };
+};
+const mockStore = configureStore();
+const store = mockStore(initStore);
+store.dispatch = jest.fn();
 
 jest.mock('../component/OnePokemon');
 
 beforeEach(() => {
-  useSelector.mockImplementation(selector => selector(
-    {
-      pokemon: {
-        chosen: {
-          common_name: 'Ivy common',
-          scientific_name: 'Ivy scientific',
-          image_url: 'Ivy.jpg',
-          images: {
-            fruit: [Error()],
-            leaf: ['image.jpg'],
-            flower: ['image.jpg'],
-          },
-        },
-        loading: false,
-      },
-    },
-  ));
+  initStoreReset();
 });
 
 describe('<PokemonsListContainer />', () => {
-  it('is connecting to store', () => {
+  it('is connecting to store and show stored pokemon if ids of the stored pokemon and selected pokemon are same', () => {
     render(
-      <OnePokemonContainer />,
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '3' } }} />
+      </Provider>,
     );
-    expect(screen.getByText(/Ivy scientific/i)).toBeInTheDocument();
-    expect(screen.getByText(/Ivy common/i)).toBeInTheDocument();
+    expect(screen.getByText(/grassland/i)).toBeInTheDocument();
+    expect(screen.getByText(/quadruped/i)).toBeInTheDocument();
+    expect(screen.getByText(/["1","2","3"]/i)).toBeInTheDocument();
   });
 
   it('is updating if there is an error when images are being installed', () => {
+    initStore.pokemon.loading = false;
     render(
-      <OnePokemonContainer />,
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '3' } }} />
+      </Provider>,
     );
-    expect(screen.getByAltText('test').src).toEqual('http://localhost/#');
 
+    expect(screen.getByAltText('test').src).toEqual('http://localhost/#');
     ReactTestUtils.Simulate.error(screen.getByAltText('test'));
     expect(screen.getByAltText('test').src).toEqual('http://localhost/emptyImage.svg');
   });
 
-  it('renders Loading if loading is \'false\' in store', () => {
-    useSelector.mockImplementation(selector => selector(
-      {
-        pokemon:
-        {
-          chosen: { },
-          loading: true,
-        },
-      },
-    ));
-    const tree = renderer.create(<OnePokemonContainer />).toJSON();
-    expect(tree[0].props.className).toEqual('loading main');
+  it('renders Loading if loading is \'true\' in store', () => {
+    initStore.pokemon.loading = true;
+    const tree = renderer.create(
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '2' } }} />
+      </Provider>,
+    ).toJSON();
+
+    expect(tree.props.className).toEqual('loading main');
+  });
+
+  it('dispatch fetchSelectedPokemon if id of the stored pokemon doesn\'t exist', () => {
+    initStore.pokemon.chosen = {};
+    render(
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '2' } }} />
+      </Provider>,
+    );
+    expect(store.dispatch.mock.calls.length).toEqual(1);
+  });
+
+  it('dispatch fetchSelectedPokemon if ids of the stored pokemon and selected pokemon are different ', () => {
+    initStore.pokemon.loading = false;
+    render(
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '2' } }} />
+      </Provider>,
+    );
+
+    expect(store.dispatch.mock.calls.length).toEqual(1);
   });
 
   it('renders correctly', () => {
     const renderedContainer = render(
-      <OnePokemonContainer />,
+      <Provider store={store}>
+        <OnePokemonContainer match={{ params: { id: '3' } }} />
+      </Provider>,
     );
     expect(renderedContainer).toMatchSnapshot();
   });

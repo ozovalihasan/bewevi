@@ -33,7 +33,7 @@ const PagesBarContainer = () => {
       pages.push([selfPage, offset / limit]);
       addedSelf = true;
     }
-    pages.push([links.next, 'next']);
+    pages.push([links.next, 'Next']);
   }
 
   const handleClick = pageUrl => {
@@ -41,7 +41,11 @@ const PagesBarContainer = () => {
   };
 
   return (
-    <PagesBar pages={pages} handleClick={handleClick} selfPage={selfPage} />
+    <PagesBar
+      pages={pages}
+      handleClick={handleClick}
+      selfPage={selfPage}
+    />
   );
 };
 

@@ -8,35 +8,34 @@ import OnePokemon from './OnePokemon';
 
 const handleError = jest.fn();
 const pokemon = {
-  image_url: 'www.ozovalihasan.com',
-  images: {
-    fruit: [{ imageUrl: 'www.ozovalihasan.com' }],
-    leaf: [{ imageUrl: 'www.ozovalihasan.com' }],
-    flower: [{ imageUrl: 'www.ozovalihasan.com' }],
-  },
-};
+  name: 'venusaur',
+  weight: 0.2,
+  height: 20,
 
+};
+const color = 'green';
+const habitat = 'grassland';
+const shape = 'quadruped';
+
+const evolutionChain = ['1', '2', '3'];
 describe('<OnePokemon />', () => {
   it('contains expected texts', () => {
     render(
       <BrowserRouter>
         <OnePokemon
-          pokemon={{
-            image_url: null,
-            images: {
-              fruit: [null],
-              leaf: [null],
-              flower: [null],
-            },
-          }}
+          pokemon={pokemon}
           handleError={handleError}
-
+          color={color}
+          habitat={habitat}
+          shape={shape}
+          evolutionChain={evolutionChain}
         />
       </BrowserRouter>,
     );
-    expect(screen.getByText(/Fruit/i)).toBeInTheDocument();
-    expect(screen.getByText(/Leaf/i)).toBeInTheDocument();
-    expect(screen.getByText(/Flower/i)).toBeInTheDocument();
+    expect(screen.getByText(/grassland/i)).toBeInTheDocument();
+    expect(screen.getByText(/quadruped/i)).toBeInTheDocument();
+    expect(screen.getByText(/2kg/i)).toBeInTheDocument();
+    expect(screen.getByText(/200cm/i)).toBeInTheDocument();
   });
 
   it('triggers onError when there are errors of img tags', () => {
@@ -45,12 +44,17 @@ describe('<OnePokemon />', () => {
         <OnePokemon
           pokemon={pokemon}
           handleError={handleError}
-
+          color={color}
+          habitat={habitat}
+          shape={shape}
+          evolutionChain={evolutionChain}
         />
       </BrowserRouter>,
     );
+
     const imgs = ReactTestUtils.scryRenderedDOMComponentsWithTag(rendered, 'img');
-    imgs.map(img => ReactTestUtils.Simulate.error(img));
+    // console.warn(imgs.length);
+    imgs.map(img => { ReactTestUtils.Simulate.error(img); });
     expect(handleError.mock.calls.length).toBe(4);
   });
 
@@ -60,7 +64,10 @@ describe('<OnePokemon />', () => {
         <OnePokemon
           pokemon={pokemon}
           handleError={handleError}
-
+          color={color}
+          habitat={habitat}
+          shape={shape}
+          evolutionChain={evolutionChain}
         />
       </BrowserRouter>,
     ).toJSON();

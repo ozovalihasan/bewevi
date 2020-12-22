@@ -16,7 +16,7 @@ exports[`<PagesBar /> renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    4
+    2
   </button>
   <button
     className="pages-bar page-button "

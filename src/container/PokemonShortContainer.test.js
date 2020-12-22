@@ -17,7 +17,10 @@ store.dispatch = jest.fn();
 
 jest.mock('../component/PokemonShort');
 
-const pokemon = { id: 1993 };
+const pokemon = {
+  url: 'https://pokeapi.co/api/v2/pokemon/21/',
+  name: 'raichu',
+};
 
 let renderReadyComponent;
 
@@ -32,25 +35,6 @@ beforeEach(() => {
 });
 
 describe('<PokemonShortContainer />', () => {
-  it('is triggering handleClick and redirect the user to the linked page when the button is clicked ', () => {
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <PokemonShortContainer pokemon={pokemon} />
-          <Redirect to="/" />
-          <Switch>
-            <Route exact path="/" render={() => <>Main Page</>} />
-            <Route exact path="/one-pokemon" render={() => <div>One Pokemon Page</div>} />
-          </Switch>
-        </BrowserRouter>
-      </Provider>,
-    );
-    expect(store.dispatch).toHaveBeenCalledTimes(0);
-    userEvent.click(screen.getByText(/test/i));
-    expect(store.dispatch).toHaveBeenCalledTimes(1);
-    expect(screen.getByText(/One Pokemon Page/i)).toBeInTheDocument();
-  });
-
   it('is triggering handleError if there is an error related to img tag', () => {
     render(renderReadyComponent);
     ReactTestUtils.Simulate.error(screen.getByAltText('test'));

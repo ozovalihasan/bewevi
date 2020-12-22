@@ -10,16 +10,13 @@ Object {
       >
         <a
           class="pokemon-short main"
-          href="/one-pokemon"
+          href="/one-pokemon/21"
         >
           <div
             class="pokemon-short description"
           >
             <div>
-              Ivy common
-            </div>
-            <div>
-              Ivy scientific
+              spearow
             </div>
           </div>
           <div
@@ -28,22 +25,19 @@ Object {
             <img
               alt="pokemon"
               class="pokemon-short pokemon-image"
-              src="Ivy.jpg"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
             />
           </div>
         </a>
         <a
           class="pokemon-short main"
-          href="/one-pokemon"
+          href="/one-pokemon/22"
         >
           <div
             class="pokemon-short description"
           >
             <div>
-              Ivy common2
-            </div>
-            <div>
-              Ivy scientific2
+              fearow
             </div>
           </div>
           <div
@@ -52,7 +46,7 @@ Object {
             <img
               alt="pokemon"
               class="pokemon-short pokemon-image"
-              src="Ivy2.jpg"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
             />
           </div>
         </a>
@@ -65,16 +59,13 @@ Object {
     >
       <a
         class="pokemon-short main"
-        href="/one-pokemon"
+        href="/one-pokemon/21"
       >
         <div
           class="pokemon-short description"
         >
           <div>
-            Ivy common
-          </div>
-          <div>
-            Ivy scientific
+            spearow
           </div>
         </div>
         <div
@@ -83,22 +74,19 @@ Object {
           <img
             alt="pokemon"
             class="pokemon-short pokemon-image"
-            src="Ivy.jpg"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/21.png"
           />
         </div>
       </a>
       <a
         class="pokemon-short main"
-        href="/one-pokemon"
+        href="/one-pokemon/22"
       >
         <div
           class="pokemon-short description"
         >
           <div>
-            Ivy common2
-          </div>
-          <div>
-            Ivy scientific2
+            fearow
           </div>
         </div>
         <div
@@ -107,7 +95,7 @@ Object {
           <img
             alt="pokemon"
             class="pokemon-short pokemon-image"
-            src="Ivy2.jpg"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/22.png"
           />
         </div>
       </a>

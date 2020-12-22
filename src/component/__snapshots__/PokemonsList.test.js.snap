@@ -4,7 +4,7 @@ exports[`<PokemonsList /> renders correctly 1`] = `
 <div
   className="pokemons-list main"
 >
-  {"id":1,"commonName":"foo1","scientificName":"bar1","imageUrl":"foobar1"}
-  {"id":2,"commonName":"foo2","scientificName":"bar2","imageUrl":"foobar2"}
+  {"name":"spearow","url":"https://pokeapi.co/api/v2/pokemon/21/"}
+  {"name":"fearow","url":"https://pokeapi.co/api/v2/pokemon/22/"}
 </div>
 `;

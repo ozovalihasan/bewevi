@@ -18,6 +18,7 @@ function PagesBar({
     </div>
   );
 }
+
 PagesBar.propTypes = {
   pages: PropTypes.arrayOf(
     PropTypes.arrayOf(

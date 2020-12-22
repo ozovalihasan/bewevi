@@ -18,7 +18,7 @@ Object {
           class="pages-bar page-button current-page"
           type="button"
         >
-          42
+          2
         </button>
         <button
           class="pages-bar page-button "
@@ -43,7 +43,7 @@ Object {
         class="pages-bar page-button current-page"
         type="button"
       >
-        42
+        2
       </button>
       <button
         class="pages-bar page-button "

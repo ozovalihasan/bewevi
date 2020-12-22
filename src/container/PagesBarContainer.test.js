@@ -10,9 +10,9 @@ import PagesBarContainer from './PagesBarContainer';
 const initStore = {
   pokemon: {
     links: {
-      last: 'ozovalihasan.com/page=43&word=ivy',
-      self: 'ozovalihasan.com/page=42&word=ivy',
-      first: 'ozovalihasan.com/page=1&word=ivy',
+      next: 'https://pokeapi.co/api/v2/pokemon/?offset=40&limit=20',
+      previous: 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20',
+
     },
   },
 };
@@ -36,7 +36,7 @@ describe('<FilterContainer />', () => {
       renderReadyComponent,
     );
     expect(screen.getByText(/Previous/i)).toBeInTheDocument();
-    expect(screen.getByText(/42/i)).toBeInTheDocument();
+    expect(screen.getByText(/2/i)).toBeInTheDocument();
     expect(screen.getByText(/Next/i)).toBeInTheDocument();
   });
 
@@ -47,7 +47,7 @@ describe('<FilterContainer />', () => {
     expect(store.dispatch.mock.calls.length).toEqual(0);
     userEvent.click(screen.getByText('Previous'));
     expect(store.dispatch.mock.calls.length).toEqual(1);
-    userEvent.click(screen.getByText('42'));
+    userEvent.click(screen.getByText('2'));
     expect(store.dispatch.mock.calls.length).toEqual(1);
     userEvent.click(screen.getByText('Next'));
     expect(store.dispatch.mock.calls.length).toEqual(2);

@@ -7,7 +7,9 @@ import '@testing-library/jest-dom';
 import App from './App';
 
 const initStore = { pokemon: {} };
-const initStoreReset = () => { initStore.pokemon = { initialized: false, loading: false }; };
+const initStoreReset = () => {
+  initStore.pokemon = { initialized: false, loading: false };
+};
 const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();
@@ -17,10 +19,10 @@ jest.mock('../component/Loading', () => {
   Loading.displayName = 'Loading';
   return Loading;
 });
-jest.mock('./ToggleFilterSearchContainer', () => {
-  const ToggleFilterSearchContainer = () => (<div>Mock Toggle Filter Search Container </div>);
-  ToggleFilterSearchContainer.displayName = 'ToggleFilterSearchContainer';
-  return ToggleFilterSearchContainer;
+jest.mock('./ErrorContainer', () => {
+  const ErrorContainer = () => (<div>Mock Error Container </div>);
+  ErrorContainer.displayName = 'ErrorContainer';
+  return ErrorContainer;
 });
 jest.mock('./PokemonsListContainer', () => {
   const PokemonsListContainer = () => (<div>Mock Pokemons List Container </div>);
@@ -57,7 +59,6 @@ describe('<App />', () => {
       expect(store.dispatch.mock.calls.length).toEqual(1);
 
       expect(screen.queryByText(/Mock Loading/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Mock Toggle Filter Search Container/i)).not.toBeInTheDocument();
       expect(screen.queryByText(/Mock Pokemons List Container/i)).not.toBeInTheDocument();
       expect(screen.queryByText(/Mock Pages Bar Container/i)).not.toBeInTheDocument();
     });
@@ -79,7 +80,6 @@ describe('<App />', () => {
       );
 
       expect(screen.queryByText(/Mock Loading/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Mock Toggle Filter Search Container/i)).toBeInTheDocument();
       expect(screen.queryByText(/Mock Pokemons List Container/i)).toBeInTheDocument();
       expect(screen.queryByText(/Mock Pages Bar Container/i)).toBeInTheDocument();
     });
@@ -91,7 +91,6 @@ describe('<App />', () => {
         renderReadyComponent,
       );
       expect(screen.queryByText(/Mock Loading/i)).toBeInTheDocument();
-      expect(screen.queryByText(/Mock Toggle Filter Search Container/i)).toBeInTheDocument();
       expect(screen.queryByText(/Mock Pokemons List Container/i)).toBeInTheDocument();
       expect(screen.queryByText(/Mock Pages Bar Container/i)).toBeInTheDocument();
     });

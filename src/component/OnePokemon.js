@@ -60,7 +60,7 @@ const OnePokemon = ({
       <div className="one-pokemon bottom-images">
         {evolutionChain.map(pokemonId => (
           <div key={pokemonId} className="one-pokemon one-chain ">
-            <Link to={`/one-pokemon/${pokemonId}`} className="one-pokemon main">
+            <Link to={`/one-pokemon/${pokemonId}`} className="one-pokemon main" onError={handleError}>
               <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`} alt="Pokemon in evolution chain of the selected pokemon" className="one-pokemon bottom-images" />
             </Link>
           </div>

@@ -12,6 +12,9 @@ The app is using [PokéAPI](https://pokeapi.co/) as API
 ## Live Demo
 [Live Demo](https://bewevi.ozovalihasan.com/)
 
+## Presentation
+You may watch [my presentation video](https://www.loom.com/share/9b274ece5ffa498998d6929c28c2407d)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.

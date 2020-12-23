@@ -2,18 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 I developed a catalogue application to list pokemons. The project includes the basic features of
+
 - Listing pokemons with general information
 - Showing any pokemon with details
 
-The app is using [PokéAPI](https://pokeapi.co/) as API
+The app is using [PokéAPI](https://pokeapi.co/) as API.
 
 ![screenshot](./public/bewevi.gif)
 
 ## Live Demo
-[Live Demo](https://bewevi.ozovalihasan.com/)
+Please check [live demo of the project.](https://bewevi.ozovalihasan.com/)
 
 ## Presentation
-You may watch [my presentation video](https://www.loom.com/share/9b274ece5ffa498998d6929c28c2407d)
+You may watch [my presentation video.](https://www.loom.com/share/9b274ece5ffa498998d6929c28c2407d)
 
 ## Getting Started
 
@@ -21,7 +22,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Make sure Node.js is running on your local machine
+Make sure Node.js is running on your local machine.
 
 
 ## Setup
@@ -74,3 +75,5 @@ Thanks to;
 
 - [Microverse Inc](https://www.microverse.org/)
 - Contributors of [pokeapi.co](https://pokeapi.co/)
+
+

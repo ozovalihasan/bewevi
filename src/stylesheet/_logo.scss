@@ -3,10 +3,13 @@
     display: flex;
     color: $fourth-color;
     flex-shrink: 0;
+    flex-grow: 0;
     margin: 20px;
+    margin-right: 100%;
   }
 
   &.image {
+    width: auto;
     align-self: center;
     height: 50px;
     border-radius: 10px;
@@ -17,6 +20,7 @@
   }
 
   &.text {
+    width: auto;
     align-self: center;
     font-size: 30px;
   }

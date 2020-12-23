@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import OnePokemon from '../component/OnePokemon';
 import emptyImageSVG from '../assets/emptyImage.svg';
-import Loading from '../component/Loading';
 import { fetchSelectedPokemon } from '../redux';
 
 const OnePokemonContainer = ({ match }) => {
@@ -14,7 +13,7 @@ const OnePokemonContainer = ({ match }) => {
     dispatch(fetchSelectedPokemon(selectedPokemon));
   }, []);
   const {
-    color, habitat, shape, evolutionChain, loading,
+    color, habitat, shape, evolutionChain,
   } = useSelector(state => state.pokemon);
 
   const handleError = e => {
@@ -23,7 +22,6 @@ const OnePokemonContainer = ({ match }) => {
 
   return (
     <>
-      {loading && <Loading />}
       <OnePokemon
         pokemon={storedPokemon}
         handleError={handleError}

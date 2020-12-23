@@ -5,7 +5,7 @@ const EmptyImage = ({ className = '' }) => (
   <img src={emptyImageSVG} alt="Not provided" className={className} />
 );
 
-Error.propTypes = {
+EmptyImage.propTypes = {
   className: PropTypes.string.isRequired,
 };
 

@@ -12,7 +12,6 @@ describe('<Error />', () => {
     render(
       <Error error={error} />,
     );
-    screen.debug();
     expect(screen.getByText(/There is an error/i)).toBeInTheDocument();
   });
 

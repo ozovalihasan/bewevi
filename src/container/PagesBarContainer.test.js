@@ -20,6 +20,8 @@ const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();
 
+window.scrollTo = jest.fn();
+
 let renderReadyComponent;
 
 beforeEach(() => {

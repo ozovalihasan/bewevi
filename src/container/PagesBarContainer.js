@@ -37,7 +37,10 @@ const PagesBarContainer = () => {
   }
 
   const handleClick = pageUrl => {
-    if (pageUrl !== selfPage) dispatch(openPokemonPage(pageUrl));
+    if (pageUrl !== selfPage) {
+      dispatch(openPokemonPage(pageUrl));
+      window.scrollTo(0, 0);
+    }
   };
 
   return (

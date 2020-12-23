@@ -18,7 +18,6 @@ const reducer = (state = {}, action) => {
     case POKEMON_FAILURE:
       return {
         ...state,
-        initialized: true,
         loading: false,
         error: action.payload,
       };
@@ -26,7 +25,6 @@ const reducer = (state = {}, action) => {
     case ADD_ALL_POKEMONS:
       return {
         ...state,
-        initialized: true,
         loading: false,
         pokemons: action.payload.results,
         links: {

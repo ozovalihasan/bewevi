@@ -7,7 +7,6 @@ import rootReducer from './rootReducer';
 export const initialState = {
   pokemon: {
     loading: false,
-    initialized: false,
     filter: 'all',
     filterInput: '',
     search: '',

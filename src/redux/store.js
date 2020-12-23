@@ -7,9 +7,10 @@ import rootReducer from './rootReducer';
 export const initialState = {
   pokemon: {
     loading: false,
-    filter: 'all',
-    filterInput: '',
-    search: '',
+    color: '',
+    habitat: '',
+    shape: '',
+    evolutionChain: [],
     pokemons: [],
     chosen: {},
     links: {},

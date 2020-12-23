@@ -28,9 +28,8 @@ Make sure Node.js is running on your local machine
 
 - Clone this repository
 - Open terminal
-- Change directory by using `cd pokemon`
+- Change directory by using `cd bewevi`
 - Run `npm install`
-- Create `.env.local` file in the pokemon folder
 
 
 ### Usage
@@ -42,7 +41,7 @@ Make sure Node.js is running on your local machine
 
 - Clone this repository
 - Open terminal
-- Change directory by using `cd pokemon`
+- Change directory by using `cd bewevi`
 - Run `npm install`
 - Run `npm test` to test all files
 

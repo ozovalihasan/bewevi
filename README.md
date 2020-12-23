@@ -1,18 +1,16 @@
-# Ivy
+# Bewevi
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 I developed a catalogue application to list pokemons. The project includes the basic features of
 - Listing pokemons with general information
 - Showing any pokemon with details
-- Searching any pokemon
-- Filtering pokemons
 
-The app is using [Trefle.io](https://trefle.io/) as API
+The app is using [PokéAPI](https://pokeapi.co/) as API
 
-![screenshot](./public/Ivy.gif)
+![screenshot](./public/bewevi.gif)
 
 ## Live Demo
-[Live Demo](https://ivy.ozovalihasan.com/)
+[Live Demo](https://bewevi.ozovalihasan.com/)
 
 ## Getting Started
 
@@ -30,9 +28,6 @@ Make sure Node.js is running on your local machine
 - Change directory by using `cd pokemon`
 - Run `npm install`
 - Create `.env.local` file in the pokemon folder
-- Sign in `https://trefle.io/` and get your API key
-- Add `REACT_APP_API_KEY=YourAPIKey>` to .env.local file
-
 
 
 ### Usage
@@ -76,5 +71,4 @@ Give a ⭐️ if you like this project!
 Thanks to;
 
 - [Microverse Inc](https://www.microverse.org/)
-- Contributors of [Trefle.io](https://trefle.io/)
-- [unDraw](https://undraw.co/)
+- Contributors of [pokeapi.co](https://pokeapi.co/)

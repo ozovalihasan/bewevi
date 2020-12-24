@@ -8,7 +8,6 @@ Object {
       <div>
         [{"name":"spearow","url":"https://pokeapi.co/api/v2/pokemon/21/"}]
       </div>
-      <div />
       <div>
         Mock Pages Bar Container 
       </div>
@@ -18,7 +17,6 @@ Object {
     <div>
       [{"name":"spearow","url":"https://pokeapi.co/api/v2/pokemon/21/"}]
     </div>
-    <div />
     <div>
       Mock Pages Bar Container 
     </div>

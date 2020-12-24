@@ -61,7 +61,7 @@ describe('<PokemonsListContainer />', () => {
     initStore.pokemon.filter.filteredPokemon = ['spearow'];
     render(renderReadyComponent);
     expect(screen.getAllByText(/spearow/i).length).toEqual(1);
-    expect(screen.getAllByText(/fearow/i).length).toEqual(0);
+    expect(screen.queryByText(/fearow/i)).not.toBeInTheDocument();
   });
 
   it('renders correctly', () => {

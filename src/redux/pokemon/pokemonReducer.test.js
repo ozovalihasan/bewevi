@@ -5,6 +5,10 @@ import {
   UPDATE_SELECTED_POKEMON,
   UPDATE_SPECIES_SELECTED_POKEMON,
   UPDATE_EVOLUTION_SELECTED_POKEMON,
+  UPDATE_CATEGORY_NAME,
+  UPDATE_CATEGORY_LIST,
+  UPDATE_FILTER_NAME,
+  UPDATE_FILTER_POKEMON,
 } from './pokemonTypes';
 
 import pokemonReducer from './pokemonReducer';
@@ -27,7 +31,7 @@ describe('Pokemon Reducer', () => {
       type: POKEMON_FAILURE,
       payload: 'There is an error',
     });
-    expect(state).toEqual({ initialized: true, loading: false, error: 'There is an error' });
+    expect(state).toEqual({ loading: false, error: 'There is an error' });
   });
 
   it('should return state with the information of pokemons chosen arbitrarily', () => {
@@ -36,7 +40,6 @@ describe('Pokemon Reducer', () => {
       payload: { results: 'data of pokemons', next: 'Next page', previous: 'Previous Page' },
     });
     expect(state).toEqual({
-      initialized: true,
       loading: false,
       pokemons: 'data of pokemons',
       links: {
@@ -70,6 +73,7 @@ describe('Pokemon Reducer', () => {
       shape: 'Shape name',
     });
   });
+
   it('should return evolution chain, habitat and shape of selected pokemon', () => {
     const state = pokemonReducer(undefined, {
       type: UPDATE_EVOLUTION_SELECTED_POKEMON,
@@ -80,5 +84,67 @@ describe('Pokemon Reducer', () => {
       evolutionChain: 'Evolution Chain',
       loading: false,
     });
+  });
+
+  it('should return category of filter', () => {
+    const state = pokemonReducer(undefined, {
+      type: UPDATE_CATEGORY_NAME,
+      payload: 'Shape',
+    });
+    expect(state).toEqual({
+      error: '',
+      filter: {
+        categoryName: 'Shape',
+      },
+      loading: false,
+    });
+  });
+
+  it('should return list of given category', () => {
+    const state = pokemonReducer(undefined, {
+      type: UPDATE_CATEGORY_LIST,
+      payload: ['ball', 'fish'],
+    });
+    expect(state).toEqual(
+      {
+        error: '',
+        filter: {
+          categoryList: ['ball', 'fish'],
+        },
+        loading: false,
+      },
+    );
+  });
+
+  it('should update filter name', () => {
+    const state = pokemonReducer(undefined, {
+      type: UPDATE_FILTER_NAME,
+      payload: 'ball',
+    });
+    expect(state).toEqual(
+      {
+        error: '',
+        filter: {
+          name: 'ball',
+        },
+        loading: false,
+      },
+    );
+  });
+
+  it('should update filtered pokemon list', () => {
+    const state = pokemonReducer(undefined, {
+      type: UPDATE_FILTER_POKEMON,
+      payload: ['ivysaur', 'venusaur'],
+    });
+    expect(state).toEqual(
+      {
+        error: '',
+        filter: {
+          filteredPokemon: ['ivysaur', 'venusaur'],
+        },
+        loading: false,
+      },
+    );
   });
 });

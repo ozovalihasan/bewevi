@@ -8,9 +8,7 @@ export const initialState = {
   pokemon: {
     loading: false,
     filter: {
-      categoryName: 'Filter By Category',
       categoryList: [],
-      name: 'none',
       filteredPokemon: [],
     },
     color: '',

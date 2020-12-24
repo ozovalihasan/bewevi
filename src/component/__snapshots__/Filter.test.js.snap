@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> If category is 'Filter By Category' renders correctly 1`] = `
+<div
+  className="filter main"
+>
+  <select
+    className="filter filter-select-category"
+    name="filter-category"
+    onChange={[MockFunction]}
+    value="Filter By Category"
+  >
+    <option
+      defaultValue="none"
+      disabled={true}
+      hidden={true}
+    >
+      Filter By Category
+    </option>
+    <option
+      defaultValue="none"
+    >
+      All
+    </option>
+    <option
+      value="pokemon-habitat/"
+    >
+      Habitat
+    </option>
+    <option
+      value="pokemon-shape/"
+    >
+      Shape
+    </option>
+  </select>
+  <div
+    className="filter filter-close-box"
+  />
+</div>
+`;
+
+exports[`<Filter /> If category is not 'Filter By Category' or 'All' renders correctly 1`] = `
+<div
+  className="filter main"
+>
+  <select
+    className="filter filter-select-category"
+    name="filter-category"
+    onChange={[MockFunction]}
+    value="Filter By Category"
+  >
+    <option
+      defaultValue="none"
+      disabled={true}
+      hidden={true}
+    >
+      Filter By Category
+    </option>
+    <option
+      defaultValue="none"
+    >
+      All
+    </option>
+    <option
+      value="pokemon-habitat/"
+    >
+      Habitat
+    </option>
+    <option
+      value="pokemon-shape/"
+    >
+      Shape
+    </option>
+  </select>
+  <div
+    className="filter filter-close-box"
+  />
+</div>
+`;

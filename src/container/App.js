@@ -6,6 +6,7 @@ import ErrorContainer from './ErrorContainer';
 import PokemonsListContainer from './PokemonsListContainer';
 import Logo from '../component/Logo';
 import OnePokemonContainer from './OnePokemonContainer';
+import FilterContainer from './FilterContainer';
 
 function App() {
   const loading = useSelector(state => state.pokemon.loading);
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Logo />
+      <FilterContainer />
       {loading && <Loading />}
       {error && <ErrorContainer />}
       <Switch>

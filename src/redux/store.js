@@ -7,6 +7,12 @@ import rootReducer from './rootReducer';
 export const initialState = {
   pokemon: {
     loading: false,
+    filter: {
+      categoryName: 'Filter By Category',
+      categoryList: [],
+      name: 'none',
+      filteredPokemon: [],
+    },
     color: '',
     habitat: '',
     shape: '',

@@ -6,6 +6,10 @@ import {
   UPDATE_SELECTED_POKEMON,
   UPDATE_SPECIES_SELECTED_POKEMON,
   UPDATE_EVOLUTION_SELECTED_POKEMON,
+  UPDATE_CATEGORY_NAME,
+  UPDATE_CATEGORY_LIST,
+  UPDATE_FILTER_NAME,
+  UPDATE_FILTER_POKEMON,
 } from './pokemonTypes';
 
 export const pokemonRequest = () => ({
@@ -41,6 +45,32 @@ export const updateEvolutionSelectedPokemon = evolution => {
   });
 };
 
+export const updateCategoryName = categoryName => ({
+  type: UPDATE_CATEGORY_NAME,
+  payload: categoryName,
+});
+
+export const updateCategoryList = categoryList => {
+  const categoryListResults = categoryList.results.map(category => category.name);
+  return ({
+    type: UPDATE_CATEGORY_LIST,
+    payload: categoryListResults,
+  });
+};
+
+export const updateFilterName = filterName => ({
+  type: UPDATE_FILTER_NAME,
+  payload: filterName,
+});
+
+export const updateFilterPokemon = filteredPokemon => {
+  const filteredPokemonList = filteredPokemon.pokemon_species.map(pokemon => pokemon.name);
+  return ({
+    type: UPDATE_FILTER_POKEMON,
+    payload: filteredPokemonList,
+  });
+};
+
 export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
   dispatch(pokemonRequest());
   axios(urlAPI)
@@ -55,10 +85,10 @@ export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
     });
 };
 
-const REACT_APP_SERVER_URL = 'https://pokeapi.co/api/v2/pokemon/';
+const REACT_APP_SERVER_URL = 'https://pokeapi.co/api/v2/';
 
 export const fetchPokemonsList = () => dispatch => {
-  const urlAPI = `${REACT_APP_SERVER_URL}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/`;
   axiosBlock(urlAPI, addAllPokemons, dispatch);
 };
 
@@ -80,6 +110,16 @@ export const fetchSpeciesPokemon = pokemon => dispatch => {
 };
 
 export const fetchSelectedPokemon = pokemonId => dispatch => {
-  const urlAPI = `${REACT_APP_SERVER_URL}${pokemonId}`;
+  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/${pokemonId}`;
   axiosBlock(urlAPI, fetchSpeciesPokemon, dispatch);
+};
+
+export const fetchCategoryName = category => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}${category}`;
+  axiosBlock(urlAPI, updateCategoryList, dispatch);
+};
+
+export const fetchFilterName = filterName => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}${filterName}`;
+  axiosBlock(urlAPI, updateFilterPokemon, dispatch);
 };

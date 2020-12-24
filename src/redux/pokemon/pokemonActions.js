@@ -6,9 +6,7 @@ import {
   UPDATE_SELECTED_POKEMON,
   UPDATE_SPECIES_SELECTED_POKEMON,
   UPDATE_EVOLUTION_SELECTED_POKEMON,
-  UPDATE_CATEGORY_NAME,
   UPDATE_CATEGORY_LIST,
-  UPDATE_FILTER_NAME,
   UPDATE_FILTER_POKEMON,
 } from './pokemonTypes';
 
@@ -45,11 +43,6 @@ export const updateEvolutionSelectedPokemon = evolution => {
   });
 };
 
-export const updateCategoryName = categoryName => ({
-  type: UPDATE_CATEGORY_NAME,
-  payload: categoryName,
-});
-
 export const updateCategoryList = categoryList => {
   const categoryListResults = categoryList.results.map(category => category.name);
   return ({
@@ -57,11 +50,6 @@ export const updateCategoryList = categoryList => {
     payload: categoryListResults,
   });
 };
-
-export const updateFilterName = filterName => ({
-  type: UPDATE_FILTER_NAME,
-  payload: filterName,
-});
 
 export const updateFilterPokemon = filteredPokemon => {
   let filteredPokemonList;

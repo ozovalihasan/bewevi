@@ -5,9 +5,7 @@ import {
   UPDATE_SELECTED_POKEMON,
   UPDATE_SPECIES_SELECTED_POKEMON,
   UPDATE_EVOLUTION_SELECTED_POKEMON,
-  UPDATE_CATEGORY_NAME,
   UPDATE_CATEGORY_LIST,
-  UPDATE_FILTER_NAME,
   UPDATE_FILTER_POKEMON,
 } from './pokemonTypes';
 
@@ -86,20 +84,6 @@ describe('Pokemon Reducer', () => {
     });
   });
 
-  it('should return category of filter', () => {
-    const state = pokemonReducer(undefined, {
-      type: UPDATE_CATEGORY_NAME,
-      payload: 'Shape',
-    });
-    expect(state).toEqual({
-      error: '',
-      filter: {
-        categoryName: 'Shape',
-      },
-      loading: false,
-    });
-  });
-
   it('should return list of given category', () => {
     const state = pokemonReducer(undefined, {
       type: UPDATE_CATEGORY_LIST,
@@ -110,22 +94,6 @@ describe('Pokemon Reducer', () => {
         error: '',
         filter: {
           categoryList: ['ball', 'fish'],
-        },
-        loading: false,
-      },
-    );
-  });
-
-  it('should update filter name', () => {
-    const state = pokemonReducer(undefined, {
-      type: UPDATE_FILTER_NAME,
-      payload: 'ball',
-    });
-    expect(state).toEqual(
-      {
-        error: '',
-        filter: {
-          name: 'ball',
         },
         loading: false,
       },

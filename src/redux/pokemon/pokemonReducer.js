@@ -5,10 +5,8 @@ import {
   UPDATE_SELECTED_POKEMON,
   UPDATE_SPECIES_SELECTED_POKEMON,
   UPDATE_EVOLUTION_SELECTED_POKEMON,
-  UPDATE_CATEGORY_NAME,
   UPDATE_CATEGORY_LIST,
   UPDATE_FILTER_POKEMON,
-  UPDATE_FILTER_NAME,
 } from './pokemonTypes';
 
 const reducer = (state = {}, action) => {
@@ -62,17 +60,6 @@ const reducer = (state = {}, action) => {
         error: '',
       };
 
-    case UPDATE_CATEGORY_NAME:
-      return {
-        ...state,
-        loading: false,
-        filter: {
-          ...state.filter,
-          categoryName: action.payload,
-        },
-        error: '',
-      };
-
     case UPDATE_CATEGORY_LIST:
       return {
         ...state,
@@ -80,17 +67,6 @@ const reducer = (state = {}, action) => {
         filter: {
           ...state.filter,
           categoryList: action.payload,
-        },
-        error: '',
-      };
-
-    case UPDATE_FILTER_NAME:
-      return {
-        ...state,
-        loading: false,
-        filter: {
-          ...state.filter,
-          name: action.payload,
         },
         error: '',
       };

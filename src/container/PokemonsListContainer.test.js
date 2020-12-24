@@ -16,12 +16,16 @@ const initStore = {
       name: 'fearow',
       url: 'https://pokeapi.co/api/v2/pokemon/22/',
     }],
+    filter: {
+      filteredPokemon: ['spearow'],
+    },
   },
 };
 const mockStore = configureStore();
 const store = mockStore(initStore);
 store.dispatch = jest.fn();
 
+jest.mock('../component/PokemonsList');
 jest.mock('./PagesBarContainer', () => {
   const PagesBarContainer = () => (<div>Mock Pages Bar Container </div>);
   PagesBarContainer.displayName = 'PagesBarContainer';
@@ -39,13 +43,18 @@ const renderReadyComponent = (
 describe('<PokemonsListContainer />', () => {
   it('is connecting store and rendering PokemonsList component with imported values', () => {
     render(renderReadyComponent);
-    expect(screen.getAllByText(/spearow/i).length).toEqual(1);
+    expect(screen.getAllByText(/spearow/i).length).toEqual(2);
     expect(screen.getAllByText(/fearow/i).length).toEqual(1);
   });
 
   it('is rendering PagesBarContainer component', () => {
     render(renderReadyComponent);
     expect(screen.getByText(/Mock Pages Bar Container/i)).toBeInTheDocument();
+  });
+
+  it('is dispatching fetchPokemonsList component', () => {
+    render(renderReadyComponent);
+    expect(store.dispatch.mock.calls.length).toEqual(1);
   });
 
   it('renders correctly', () => {

@@ -4,9 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Loading from '../component/Loading';
 import ErrorContainer from './ErrorContainer';
 import PokemonsListContainer from './PokemonsListContainer';
-import Logo from '../component/Logo';
 import OnePokemonContainer from './OnePokemonContainer';
-import FilterContainer from './FilterContainer';
+import Header from '../component/Header';
 
 function App() {
   const loading = useSelector(state => state.pokemon.loading);
@@ -15,8 +14,8 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Logo />
-        <FilterContainer />
+        <Header />
+
       </div>
       {loading && <Loading />}
       {error && <ErrorContainer />}

@@ -34,7 +34,7 @@ const Filter = ({
         </option>
         {categoryList.map(oneName => (
           <option key={oneName} value={oneName}>
-            {oneName}
+            {oneName.charAt(0).toUpperCase() + oneName.slice(1)}
           </option>
         ))}
       </select>

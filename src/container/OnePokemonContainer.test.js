@@ -1,19 +1,16 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-// import { useSelector } from 'react-redux';
 import configureStore from 'redux-mock-store';
-
 import ReactTestUtils from 'react-dom/test-utils';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
+
 import OnePokemonContainer from './OnePokemonContainer';
 
 const initStore = {};
 const initStoreReset = () => {
   initStore.pokemon = {
     loading: false,
-    initialized: false,
     chosen: {
       id: 3,
     },
@@ -56,17 +53,6 @@ describe('<PokemonsListContainer />', () => {
     expect(screen.getByAltText('test').src).toEqual('http://localhost/#');
     ReactTestUtils.Simulate.error(screen.getByAltText('test'));
     expect(screen.getByAltText('test').src).toEqual('http://localhost/emptyImage.svg');
-  });
-
-  it('renders Loading if loading is \'true\' in store', () => {
-    initStore.pokemon.loading = true;
-    const tree = renderer.create(
-      <Provider store={store}>
-        <OnePokemonContainer match={{ params: { id: '2' } }} />
-      </Provider>,
-    ).toJSON();
-
-    expect(tree.props.className).toEqual('loading main');
   });
 
   it('dispatch fetchSelectedPokemon if id of the stored pokemon doesn\'t exist', () => {

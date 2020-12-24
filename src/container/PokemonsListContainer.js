@@ -5,8 +5,11 @@ import PagesBarContainer from './PagesBarContainer';
 import { fetchPokemonsList } from '../redux';
 
 const PokemonsListContainer = () => {
-  const pokemons = useSelector(state => state.pokemon.pokemons);
   const filteredPokemon = useSelector(state => state.pokemon.filter.filteredPokemon);
+  const pokemons = useSelector(state => state.pokemon.pokemons).filter(
+    pokemon => ((filteredPokemon.length === 0) || (filteredPokemon.includes(pokemon.name))),
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPokemonsList());
@@ -14,7 +17,7 @@ const PokemonsListContainer = () => {
 
   return (
     <>
-      <PokemonsList pokemons={pokemons} filteredPokemon={filteredPokemon} />
+      <PokemonsList pokemons={pokemons} />
       <PagesBarContainer />
     </>
 

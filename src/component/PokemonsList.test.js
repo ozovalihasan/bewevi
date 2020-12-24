@@ -17,7 +17,7 @@ const pokemons = [
   },
 ];
 
-let filteredPokemon = [];
+const filteredPokemon = [];
 
 describe('<PokemonsList />', () => {
   it('renders PokemonShortContainer component without filtering Pokemons if filteredPokemon is empty', () => {
@@ -29,18 +29,6 @@ describe('<PokemonsList />', () => {
     );
     expect(screen.getByText(/{"name":"spearow","url":"https:\/\/pokeapi.co\/api\/v2\/pokemon\/21\/"}/i)).toBeInTheDocument();
     expect(screen.getByText(/{"name":"fearow","url":"https:\/\/pokeapi.co\/api\/v2\/pokemon\/22\/"}/i)).toBeInTheDocument();
-  });
-
-  it('renders PokemonShortContainer component without filtering Pokemons if filteredPokemon isn\'t empty', () => {
-    filteredPokemon = ['spearow'];
-    render(
-      <PokemonsList
-        pokemons={pokemons}
-        filteredPokemon={filteredPokemon}
-      />,
-    );
-    expect(screen.getByText(/{"name":"spearow","url":"https:\/\/pokeapi.co\/api\/v2\/pokemon\/21\/"}/i)).toBeInTheDocument();
-    expect(screen.queryByText(/{"name":"fearow","url":"https:\/\/pokeapi.co\/api\/v2\/pokemon\/22\/"}/i)).not.toBeInTheDocument();
   });
 
   it('renders correctly', () => {

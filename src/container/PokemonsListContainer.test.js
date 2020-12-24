@@ -17,7 +17,7 @@ const initStore = {
       url: 'https://pokeapi.co/api/v2/pokemon/22/',
     }],
     filter: {
-      filteredPokemon: ['spearow'],
+      filteredPokemon: [],
     },
   },
 };
@@ -43,7 +43,7 @@ const renderReadyComponent = (
 describe('<PokemonsListContainer />', () => {
   it('is connecting store and rendering PokemonsList component with imported values', () => {
     render(renderReadyComponent);
-    expect(screen.getAllByText(/spearow/i).length).toEqual(2);
+    expect(screen.getAllByText(/spearow/i).length).toEqual(1);
     expect(screen.getAllByText(/fearow/i).length).toEqual(1);
   });
 
@@ -55,6 +55,13 @@ describe('<PokemonsListContainer />', () => {
   it('is dispatching fetchPokemonsList component', () => {
     render(renderReadyComponent);
     expect(store.dispatch.mock.calls.length).toEqual(1);
+  });
+
+  it('is filtering pokemon if filteredPokemon is not empty', () => {
+    initStore.pokemon.filter.filteredPokemon = ['spearow'];
+    render(renderReadyComponent);
+    expect(screen.getAllByText(/spearow/i).length).toEqual(1);
+    expect(screen.getAllByText(/fearow/i).length).toEqual(0);
   });
 
   it('renders correctly', () => {

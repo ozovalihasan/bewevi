@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I developed a catalogue application to list pokemons. The project includes the basic features of
 
 - Listing pokemons with general information
+- Filtering pokemon shown on any page of list(not all Pokemon)
 - Showing any pokemon with details
 
 The app is using [PokéAPI](https://pokeapi.co/) as API.

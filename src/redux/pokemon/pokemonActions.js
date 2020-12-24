@@ -64,7 +64,12 @@ export const updateFilterName = filterName => ({
 });
 
 export const updateFilterPokemon = filteredPokemon => {
-  const filteredPokemonList = filteredPokemon.pokemon_species.map(pokemon => pokemon.name);
+  let filteredPokemonList;
+  if (filteredPokemon.length !== 0) {
+    filteredPokemonList = filteredPokemon.pokemon_species.map(pokemon => pokemon.name);
+  } else {
+    filteredPokemonList = filteredPokemon;
+  }
   return ({
     type: UPDATE_FILTER_POKEMON,
     payload: filteredPokemonList,

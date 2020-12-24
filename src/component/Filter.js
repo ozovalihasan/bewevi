@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 // import filterIcon from '../assets/filter.svg';
+// import filterIcon from '../assets/filter.svg';
 
 const Filter = ({
   handleChangeCategory,
@@ -11,8 +12,11 @@ const Filter = ({
 }) => (
   <div className="filter main">
     <select className="filter filter-select-category" name="filter-category" onChange={handleChangeCategory} value={category}>
-      <option defaultValue="none" selected>
+      <option defaultValue="none" disabled hidden>
         Filter By Category
+      </option>
+      <option defaultValue="none">
+        All
       </option>
       {categoryNameList.map(oneCategory => (
         <option key={oneCategory[0]} value={oneCategory[1]}>
@@ -20,10 +24,13 @@ const Filter = ({
         </option>
       ))}
     </select>
-    {categoryList !== {} && (
+    {category !== 'Filter By Category' && category !== 'All' && (
       <select className="filter filter-select-name" name="filter-name" onChange={handleFilterName} value={filterName}>
-        <option defaultValue="none" selected>
+        <option defaultValue="none" disabled hidden>
           Filter Name
+        </option>
+        <option defaultValue="none">
+          All
         </option>
         {categoryList.map(oneName => (
           <option key={oneName} value={oneName}>
@@ -32,17 +39,19 @@ const Filter = ({
         ))}
       </select>
     )}
+    <div className="filter filter-close-box" />
+
   </div>
 
 );
 
 Filter.propTypes = {
   handleChangeCategory: PropTypes.func.isRequired,
-  categoryNameList:
-  PropTypes.arrayOf(
-    PropTypes.string.isRequired,
-  ).isRequired,
   categoryList:
+    PropTypes.arrayOf(
+      PropTypes.string.isRequired,
+    ).isRequired,
+  categoryNameList:
     PropTypes.arrayOf(
       PropTypes.arrayOf(
         PropTypes.string.isRequired,

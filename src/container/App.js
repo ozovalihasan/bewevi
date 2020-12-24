@@ -14,8 +14,10 @@ function App() {
 
   return (
     <div className="App">
-      <Logo />
-      <FilterContainer />
+      <div>
+        <Logo />
+        <FilterContainer />
+      </div>
       {loading && <Loading />}
       {error && <ErrorContainer />}
       <Switch>

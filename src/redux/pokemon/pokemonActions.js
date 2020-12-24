@@ -81,7 +81,7 @@ export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
 const REACT_APP_SERVER_URL = 'https://pokeapi.co/api/v2/';
 
 export const fetchPokemonsList = () => dispatch => {
-  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/`;
+  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/?limit=200`;
   axiosBlock(urlAPI, addAllPokemons, dispatch);
 };
 

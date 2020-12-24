@@ -15,7 +15,6 @@ function App() {
     <div className="App">
       <div>
         <Header />
-
       </div>
       {loading && <Loading />}
       {error && <ErrorContainer />}

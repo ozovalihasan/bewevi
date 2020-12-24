@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-// import filterIcon from '../assets/filter.svg';
-// import filterIcon from '../assets/filter.svg';
 
 const Filter = ({
   handleChangeCategory,

@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import renderer from 'react-test-renderer';
-import ReactTestUtils from 'react-dom/test-utils';
 import Filter from './Filter';
 
 const handleChangeCategory = jest.fn();

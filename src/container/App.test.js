@@ -11,7 +11,7 @@ import App from './App';
 
 const initStore = { pokemon: {} };
 const initStoreReset = () => {
-  initStore.pokemon = { initialized: false, loading: false };
+  initStore.pokemon = { loading: false };
 };
 const mockStore = configureStore();
 const store = mockStore(initStore);

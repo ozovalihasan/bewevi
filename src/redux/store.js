@@ -1,6 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+// import { createStore, applyMiddleware } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
+
+// import thunk from 'redux-thunk';
 
 import rootReducer from './rootReducer';
 
@@ -20,13 +22,13 @@ export const initialState = {
     links: {},
     error: '',
   },
-
 };
 
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(thunk)),
-);
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => getDefaultMiddleware(),
+  devTools: process.env.NODE_ENV !== 'production',
+  preloadedState: initialState,
+});
 
 export default store;

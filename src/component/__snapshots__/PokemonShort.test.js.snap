@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PokemonShort /> renders correctly 1`] = `
+<a
+  className="pokemon-short main"
+  href="/one-pokemon/10"
+  onClick={[Function]}
+>
+  <div
+    className="pokemon-short description"
+  >
+    <div>
+      raichu
+    </div>
+  </div>
+  <div
+    className="pokemon-short image-container"
+  >
+    <img
+      alt="pokemon"
+      className="pokemon-short pokemon-image"
+      onError={[MockFunction]}
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
+    />
+  </div>
+</a>
+`;

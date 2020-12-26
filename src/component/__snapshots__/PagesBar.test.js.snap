@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PagesBar /> renders correctly 1`] = `
+<div
+  className="pages-bar main"
+>
+  <button
+    className="pages-bar page-button "
+    onClick={[Function]}
+    type="button"
+  >
+    Previous
+  </button>
+  <button
+    className="pages-bar page-button current-page"
+    onClick={[Function]}
+    type="button"
+  >
+    2
+  </button>
+  <button
+    className="pages-bar page-button "
+    onClick={[Function]}
+    type="button"
+  >
+    Next
+  </button>
+</div>
+`;

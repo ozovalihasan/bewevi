@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PokemonsList /> renders correctly 1`] = `
+<div
+  className="pokemons-list main"
+>
+  {"name":"spearow","url":"https://pokeapi.co/api/v2/pokemon/21/"}
+  {"name":"fearow","url":"https://pokeapi.co/api/v2/pokemon/22/"}
+</div>
+`;

@@ -1,0 +1,21 @@
+@import 'reset.css';
+@import 'variable';
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+@import
+  'error',
+  'loading',
+  'filter',
+  'header',
+  'logo',
+  'one-pokemon',
+  'pages-bar',
+  'pokemon-short',
+  'pokemons-list';

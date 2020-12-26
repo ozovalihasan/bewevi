@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> renders correctly 1`] = `
+<a
+  className="logo main"
+  href="/"
+  onClick={[Function]}
+>
+  <img
+    alt="logo"
+    className="logo image"
+    src="emptyImage.svg"
+  />
+  <div
+    className="logo text"
+  >
+    Bewevi
+  </div>
+</a>
+`;

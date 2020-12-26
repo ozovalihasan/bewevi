@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OnePokemon /> renders correctly 1`] = `
+<div
+  className="one-pokemon main"
+>
+  <div
+    className="one-pokemon top-part"
+  >
+    <div
+      className="one-pokemon main-image"
+    >
+      <img
+        alt="pokemon"
+        className="one-pokemon top-images green"
+        onError={[MockFunction]}
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/undefined.png"
+      />
+    </div>
+    <div
+      className="one-pokemon top-description"
+    >
+      <div
+        className="one-pokemon description-part"
+      >
+        Name:
+         
+        venusaur
+      </div>
+      <div
+        className="one-pokemon description-part"
+      >
+        Habitat:
+         
+        grassland
+      </div>
+      <div
+        className="one-pokemon description-part"
+      >
+        Shape:
+         
+        quadruped
+      </div>
+      <div
+        className="one-pokemon description-part"
+      >
+        Weight:
+         
+        2
+        kg
+      </div>
+      <div
+        className="one-pokemon description-part"
+      >
+        Height:
+         
+        200
+        cm
+      </div>
+    </div>
+  </div>
+  <div
+    className="one-pokemon bottom-part"
+  >
+    Evolution Chain
+    <div
+      className="one-pokemon bottom-images"
+    >
+      <div
+        className="one-pokemon one-chain "
+      >
+        <a
+          className="one-pokemon main"
+          href="/one-pokemon/1"
+          onClick={[Function]}
+          onError={[MockFunction]}
+        >
+          <img
+            alt="Pokemon in evolution chain of the selected pokemon"
+            className="one-pokemon bottom-images"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          />
+        </a>
+      </div>
+      <div
+        className="one-pokemon one-chain "
+      >
+        <a
+          className="one-pokemon main"
+          href="/one-pokemon/2"
+          onClick={[Function]}
+          onError={[MockFunction]}
+        >
+          <img
+            alt="Pokemon in evolution chain of the selected pokemon"
+            className="one-pokemon bottom-images"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+          />
+        </a>
+      </div>
+      <div
+        className="one-pokemon one-chain "
+      >
+        <a
+          className="one-pokemon main"
+          href="/one-pokemon/3"
+          onClick={[Function]}
+          onError={[MockFunction]}
+        >
+          <img
+            alt="Pokemon in evolution chain of the selected pokemon"
+            className="one-pokemon bottom-images"
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

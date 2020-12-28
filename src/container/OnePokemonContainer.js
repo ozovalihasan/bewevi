@@ -11,7 +11,7 @@ const OnePokemonContainer = ({ match }) => {
   const selectedPokemon = match.params.id;
   useEffect(() => {
     dispatch(fetchSelectedPokemon(selectedPokemon));
-  }, []);
+  }, [selectedPokemon]);
   const {
     color, habitat, shape, evolutionChain,
   } = useSelector(state => state.pokemon);

@@ -2,41 +2,24 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const pokemonSlice = createSlice({
   name: 'pokemon',
-  initialState: {},
-  reducers: {
-
-    pokemonRequest: {
-      reducer: state => {
-        state.push({
-          loading: true,
-        });
-      },
+  initialState: {
+    loading: false,
+    filter: {
+      categoryList: [],
+      filteredPokemon: [],
     },
-
-    pokemonFailure: {
-      reducer: (state, action) => {
-        state.push({
-          loading: true,
-          error: action.payload,
-        });
-      },
-      prepare: error => ({
-        payload: error,
-      }),
+    color: '',
+    habitat: '',
+    shape: '',
+    evolutionChain: [],
+    pokemons: [],
+    chosen: {},
+    links: {
+      next: '',
+      previous: '',
     },
-
-    addAllPokemons: {
-      reducer: (state, action) => {
-        state.push({
-          loading: false,
-          pokemons: action.payload.results,
-          links: {
-            next: action.payload.next,
-            previous: action.payload.previous,
-          },
-          error: '',
-        });
-      },
+    error: '',
+  },
       prepare: res => ({
         payload: res,
       }),

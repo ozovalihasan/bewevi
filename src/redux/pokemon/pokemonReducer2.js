@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const pokemonSlice = createSlice({
   name: 'pokemon',
@@ -20,107 +22,87 @@ const pokemonSlice = createSlice({
     },
     error: '',
   },
-      prepare: res => ({
-        payload: res,
-      }),
+  reducers: {
+
+    pokemonRequest: state => {
+      state.loading = true;
     },
 
-    updateSelectedPokemon: {
-      reducer: (state, action) => {
-        state.push({
-          chosen: action.payload,
-          error: '',
-        });
-      },
-      prepare: pokemon => ({
-        payload: pokemon,
-      }),
+    pokemonFailure: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
     },
 
-    updateSpeciesSelectedPokemon: {
-      reducer: (state, action) => {
-        state.push({
-          color: action.payload.color.name,
-          habitat: action.payload.habitat.name,
-          shape: action.payload.shape.name,
-          error: '',
-        });
-      },
-      prepare: species => ({
-        payload: species,
-      }),
+    addAllPokemons: (state, { payload }) => {
+      state.loading = false;
+      state.pokemons = payload.results;
+      state.links.next = payload.next;
+      state.links.previous = payload.previous;
+      state.error = '';
+    },
+
+    updateSelectedPokemon: (state, { payload }) => {
+      state.chosen = payload;
+      state.error = '';
+    },
+
+    updateSpeciesSelectedPokemon: (state, { payload }) => {
+      state.color = payload.color.name;
+      state.habitat = payload.habitat.name;
+      state.shape = payload.shape.name;
+      state.error = '';
     },
 
     updateEvolutionSelectedPokemon: {
-      reducer: (state, action) => {
-        state.push({
-          loading: false,
-          evolutionChain: action.payload,
-          error: '',
-        });
+      reducer: (state, { payload }) => {
+        state.loading = false;
+        state.evolutionChain = payload;
+        state.error = '';
       },
       prepare: evolution => {
         const evolutionChain = JSON.stringify(evolution)
           .split(/pokemon-species\//)
           .slice(1);
-        const evolutionPokemon = evolutionChain
-          .map(pokemon => pokemon.split(/\//)[0])
-          .reverse();
         return {
-          payload: evolutionPokemon,
+          payload:
+            evolutionChain
+              .map(pokemon => pokemon.split(/\//)[0])
+              .reverse(),
         };
       },
     },
 
     updateCategoryList: {
-      reducer: (state, action) => {
-        state.push({
-          loading: false,
-          filter: {
-            ...state.filter,
-            categoryList: action.payload,
-          },
-          error: '',
-        });
+      reducer: (state, { payload }) => {
+        state.loading = false;
+        state.filter.categoryList = payload;
+        state.error = '';
       },
-      prepare: categoryList => {
-        const categoryListResults = categoryList.results.map(
-          category => category.name,
-        );
-        return {
-          payload: categoryListResults,
-        };
-      },
+      prepare: categoryList => ({
+        payload:
+          categoryList.results.map(
+            category => category.name,
+          ),
+      }),
     },
 
     updateFilterPokemon: {
-      reducer: (state, action) => {
-        state.push({
-          ...state,
-          loading: false,
-          filter: {
-            ...state.filter,
-            filteredPokemon: action.payload,
-          },
-          error: '',
-        });
+      reducer: (state, { payload }) => {
+        state.loading = false;
+        state.filter.filteredPokemon = payload;
+        state.error = '';
       },
-      prepare: filteredPokemon => {
-        let filteredPokemonList;
-        if (filteredPokemon.length !== 0) {
-          filteredPokemonList = filteredPokemon.pokemon_species.map(
+      prepare: filteredPokemon => ({
+        payload:
+          filteredPokemon.pokemon_species.map(
             pokemon => pokemon.name,
-          );
-        } else {
-          filteredPokemonList = filteredPokemon;
-        }
-        return {
-          payload: filteredPokemonList,
-        };
-      },
+          ),
+
+      }),
     },
 
   },
+
 });
 
 const { actions, reducer } = pokemonSlice;
@@ -135,4 +117,58 @@ export const {
   updateCategoryList,
   updateFilterPokemon,
 } = actions;
+
+export const axiosBlock = (urlAPI, usedDispatch, dispatch) => {
+  dispatch(pokemonRequest());
+  axios(urlAPI)
+    .then(response => {
+      if (response.status.toString()[0] !== '2') {
+        throw response.status;
+      }
+      dispatch(usedDispatch(response.data));
+    })
+    .catch(error => {
+      dispatch(pokemonFailure(error));
+    });
+};
+
+const REACT_APP_SERVER_URL = 'https://pokeapi.co/api/v2/';
+
+export const fetchPokemonsList = () => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/`;
+  axiosBlock(urlAPI, addAllPokemons, dispatch);
+};
+
+export const openPokemonPage = pagePath => dispatch => {
+  const urlAPI = pagePath;
+  axiosBlock(urlAPI, addAllPokemons, dispatch);
+};
+
+export const fetchEvolutionPokemon = species => dispatch => {
+  dispatch(updateSpeciesSelectedPokemon(species));
+  const urlAPI = species.evolution_chain.url;
+  axiosBlock(urlAPI, updateEvolutionSelectedPokemon, dispatch);
+};
+
+export const fetchSpeciesPokemon = pokemon => dispatch => {
+  dispatch(updateSelectedPokemon(pokemon));
+  const urlAPI = `https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`;
+  axiosBlock(urlAPI, fetchEvolutionPokemon, dispatch);
+};
+
+export const fetchSelectedPokemon = pokemonId => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}pokemon/${pokemonId}`;
+  axiosBlock(urlAPI, fetchSpeciesPokemon, dispatch);
+};
+
+export const fetchCategoryName = category => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}${category}`;
+  axiosBlock(urlAPI, updateCategoryList, dispatch);
+};
+
+export const fetchFilterName = filterName => dispatch => {
+  const urlAPI = `${REACT_APP_SERVER_URL}${filterName}`;
+  axiosBlock(urlAPI, updateFilterPokemon, dispatch);
+};
+
 export default reducer;
